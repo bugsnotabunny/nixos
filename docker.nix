@@ -8,7 +8,7 @@
  #  };
 
 	virtualisation.docker.enable = true;
-	virtualisation.docker.enableOnBoot = true;
+	virtualisation.docker.enableOnBoot = false;
 	virtualisation.docker.daemon.settings = {
 		insecure-registries = [
       "http://harbor.mfg.yadro.com:8888"

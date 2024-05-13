@@ -8,11 +8,7 @@ in
   ];
 
   home-manager.users.dmalakhov = {
-    home.stateVersion = "23.11";
-    home.shellAliases = {
-      ld = "mold";
-    };
-
+    home.stateVersion = "24.05";
     xdg.desktopEntries = {
       talk = {
         name = "Talk";
@@ -22,16 +18,28 @@ in
         categories = [];
         mimeType = [ "x-scheme-handler/ktalk" ];
       };
-      mattermost = {
-        name = "Mattermost";
-        comment = "Mattermost Desktop application for Linux";
-        type = "Application";
-        exec = "${pkgs.mattermost-desktop}/bin/mattermost-desktop %U";
-        icon = "${pkgs.mattermost-desktop}/share/mattermost-desktop/app_icon.png";
-        terminal = false;
-        categories = [ "Network" "InstantMessaging"];
-        mimeType = [ "x-scheme-handler/mattermost" ];
-      };
+      # mattermost = {
+      #   name = "Mattermost";
+      #   comment = "Mattermost Desktop application for Linux";
+      #   type = "Application";
+      #   exec = "${pkgs.mattermost-desktop}/bin/mattermost-desktop %U";
+      #   icon = "${pkgs.mattermost-desktop}/share/mattermost-desktop/app_icon.png";
+      #   terminal = false;
+      #   categories = [ "Network" "InstantMessaging"];
+      #   mimeType = [ "x-scheme-handler/mattermost" ];
+      # };
     };
+    programs.git = {
+      enable = true;
+      userName  = "d.malakhov";
+      userEmail = "d.malakhov@yadro.com";
+    };
+  	programs.waybar = {  
+      enable = true;
+  		style = .programs/waybar/style.css;
+  		settings = {
+        mainBar = builtins.fromJSON (builtins.readFile ./programs/waybar/config.jsonc);
+    	};
+  	};
   };
 }

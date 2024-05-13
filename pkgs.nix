@@ -2,6 +2,8 @@
 {
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
+    vscode-langservers-extracted
+    gitui
     firefox
     gparted
     cmake
@@ -31,7 +33,6 @@
     grimblast
     wlogout
     rofi
-    waybar    
     hyprland
     xfce.thunar
     xwaylandvideobridge    
@@ -41,13 +42,11 @@
 
     mattermost-desktop
     telegram-desktop
-    discord
     evolution-ews
     evolutionWithPlugins
     
     ninja
     nil
-    jre_minimal
     python3
     virtualenv
     python311Packages.pip
@@ -70,8 +69,12 @@
 
   fonts.packages = with pkgs; [
     noto-fonts
-    nerdfonts
     noto-fonts-color-emoji
+    (nerdfonts.override { fonts = [
+        "JetBrainsMono"
+        "Iosevka"
+      ];
+    })
   ];
 
   programs.hyprland = {
