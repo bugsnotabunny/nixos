@@ -1,0 +1,26 @@
+theme = "monokai"
+
+[editor]
+auto-format = true
+auto-save = true
+line-number = "relative"
+mouse = false
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "bar"
+select = "bar"
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+
+[editor.file-picker]
+hidden = false
+
+[keys.normal]
+"esc" = ["collapse_selection", ":wa"]
+[keys.select]
+"esc" = ["collapse_selection", "normal_mode", ":wa"]
+[keys.insert]
+"esc" = ["normal_mode", ":wa"]

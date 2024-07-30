@@ -1,12 +1,5 @@
 { pkgs, ... }:
 {
-	# attempt to use podman as docker replacement was not successful :(
-	# virtualisation.podman = {
- #      enable = true;
- #      dockerCompat = true;
- #      defaultNetwork.settings.dns_enabled = true;
- #  };
-
 	virtualisation.docker.enable = true;
 	virtualisation.docker.enableOnBoot = false;
 	virtualisation.docker.daemon.settings = {

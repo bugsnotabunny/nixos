@@ -8,9 +8,9 @@
 
       GTK = {
         application_prefer_dark_theme = true;
-        cursor_theme_name = "Adwaita";
-        icon_theme_name = "Adwaita";
-        theme_name = "Adwaita";
+        cursor_theme_name = "Tokionight Dark";
+        icon_theme_name = "Tokionight Dark";
+        theme_name = "Tokionight Dark";
         
         # Font name and size
         font_name = "Cantarell 16";

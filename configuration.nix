@@ -1,49 +1,34 @@
 { pkgs, ... }:
+let
+  # username = "dmalakhov";
+  # usernameFull = "Dmitriy Malakhov";
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+in
 {
   imports = [
-    ./nix-alien.nix
     ./hardware-configuration.nix
+    
+    ./locale.nix
     ./bluetooth.nix
     ./cpu-scaling.nix
     ./graphics-driver.nix 
     ./networking.nix
-    ./pkgs.nix
+
     ./shell.nix
+    ./greeter.nix 
     ./users.nix
     ./xdg.nix
     ./docker.nix
-    
-    ./greeter.nix 
-    ./home-manager.nix
-  ];
 
-  security.pki.certificateFiles = [
-    ./tel.yadro.com.crt
+    ./pkgs.nix
+    ./programs.nix
+
+    (import "${home-manager}/nixos")
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_zen;  
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.supportedFilesystems = [ "ntfs" ];
-
-  time.timeZone = "Europe/Moscow";
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "ru_RU.UTF-8";
-    LC_IDENTIFICATION = "ru_RU.UTF-8";
-    LC_MEASUREMENT = "ru_RU.UTF-8";
-    LC_MONETARY = "ru_RU.UTF-8";
-    LC_NAME = "ru_RU.UTF-8";
-    LC_NUMERIC = "ru_RU.UTF-8";
-    LC_PAPER = "ru_RU.UTF-8";
-    LC_TELEPHONE = "ru_RU.UTF-8";
-    LC_TIME = "ru_RU.UTF-8";
-  };
-
-  services.gvfs.enable = true;
-  services.udisks2.enable = true;
-  security.rtkit.enable = true;
-  security.polkit.enable = true;
 
   services.pipewire = {
     enable = true;
@@ -56,9 +41,16 @@
     jack.enable = true;
   };
   sound.enable = true;
- 
+
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+  services.tumbler.enable = true;
+  security.rtkit.enable = true;
+  security.polkit.enable = true;
   security.pam.services.gdm.enableGnomeKeyring = true;
   services.gnome.gnome-keyring.enable = true;
+
+  time.timeZone = "Europe/Moscow";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -67,4 +59,27 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "unstable"; # Did you read the comment?
+
+  # home.enableNixpkgsReleaseCheck = false;
+  home-manager.backupFileExtension = "backup";
+
+  home-manager.users.dmalakhov = {
+    home.stateVersion = "24.05";
+
+    gtk = {
+      enable = true;
+      theme = {
+        name = "Tokyonight-Dark";
+        package = pkgs.tokyo-night-gtk;
+      };
+      iconTheme = {
+        name = "Tokyonight-Dark";
+      };
+    };
+    services.blueman-applet.enable = true;
+  };
+
+  security.pki.certificateFiles = [
+    ./tel.yadro.com.crt
+  ];
 }

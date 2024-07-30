@@ -1,8 +1,21 @@
 { pkgs, ... }:
 {
   nixpkgs.config.allowUnfree = true;
+
   environment.systemPackages = with pkgs; [
-    vscode-langservers-extracted
+    pavucontrol
+    vlc
+    alacritty
+    drawio
+    unzip
+    gnumake
+    krita
+    boost
+    valgrind
+    gf
+    gdb
+    evince
+    tigervnc
     gitui
     firefox
     gparted
@@ -18,8 +31,6 @@
     git
     duf
     btop
-    helix
-    zellij
     appimage-run
     docker-compose
     xdg_utils
@@ -32,7 +43,7 @@
     grim
     grimblast
     wlogout
-    rofi
+    wofi
     hyprland
     xfce.thunar
     xwaylandvideobridge    
@@ -46,49 +57,30 @@
     evolutionWithPlugins
     
     ninja
-    nil
     python3
     virtualenv
     python311Packages.pip
     clang-tools
-    rocmPackages.llvm.clang
-    rocmPackages.llvm.clang-tools-extra
-    rocmPackages.llvm.lldb
+    lldb
     libgcc
     rustup
-    rust-analyzer
-    lua-language-server
-    marksman
     
     qbittorrent
     qutebrowser
     libreoffice-fresh
     vscode
     imagemagick
+    neofetch
   ];
 
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-color-emoji
-    (nerdfonts.override { fonts = [
+    (nerdfonts.override {
+      fonts = [
         "JetBrainsMono"
         "Iosevka"
       ];
     })
   ];
-
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs.xfce; [
-      thunar-archive-plugin
-      thunar-volman
-    ];
-  };
-	
-  programs.dconf.enable = true;
 }
