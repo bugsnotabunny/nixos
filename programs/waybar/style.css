@@ -94,6 +94,10 @@ window#waybar.hidden {
   background-color: #89b4fa;
 }
 
+#language {
+  background-color: #89b4fa;
+}
+
 #network.disconnected,
 #network.disabled {
   background-color: #313244;
@@ -106,14 +110,13 @@ window#waybar.hidden {
 
 /** Common style **/
 #workspaces,
+#language,
 #backlight,
 #battery,
 #clock,
 #cpu,
 #disk,
-#mode,
 #memory,
-#mpd,
 #tray,
 #pulseaudio,
 #network {

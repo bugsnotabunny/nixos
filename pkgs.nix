@@ -3,6 +3,11 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    nixfmt-rfc-style
+    ranger
+    cloc
+    teams-for-linux
+    thunderbird
     pavucontrol
     vlc
     alacritty
@@ -46,7 +51,7 @@
     wofi
     hyprland
     xfce.thunar
-    xwaylandvideobridge    
+    xwaylandvideobridge
     kitty
     swaybg
     viewnior
@@ -55,7 +60,7 @@
     telegram-desktop
     evolution-ews
     evolutionWithPlugins
-    
+
     ninja
     python3
     virtualenv
@@ -64,7 +69,7 @@
     lldb
     libgcc
     rustup
-    
+
     qbittorrent
     qutebrowser
     libreoffice-fresh

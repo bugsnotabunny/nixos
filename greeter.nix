@@ -11,13 +11,15 @@
         cursor_theme_name = "Tokionight Dark";
         icon_theme_name = "Tokionight Dark";
         theme_name = "Tokionight Dark";
-        
+
         # Font name and size
         font_name = "Cantarell 16";
       };
     };
     cageArgs = [
-      "-s" "-m" "last"
+      "-s"
+      "-m"
+      "last"
     ];
   };
 }

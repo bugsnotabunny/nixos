@@ -20,6 +20,8 @@
   ],
   "modules-center": [],
   "modules-right": [
+    "keyboard-state",
+    "hyprland/language",
     "tray",
     "backlight",
     "pulseaudio",
@@ -47,6 +49,10 @@
     "all-outputs": true,
     "sort-by-number": true,
     "disable-scroll": true
+  },
+  "hyprland/language": {
+    "format-ru": "🇷🇺",
+    "format-en": "🇬🇧"
   },
   "battery": {
     "interval": 5,

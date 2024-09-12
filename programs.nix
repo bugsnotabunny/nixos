@@ -1,4 +1,9 @@
-{ username, usernameFull, pkgs, ... }:
+{
+  username,
+  usernameFull,
+  pkgs,
+  ...
+}:
 {
   programs.hyprland = {
     enable = true;
@@ -12,7 +17,7 @@
       thunar-volman
     ];
   };
-	
+
   programs.dconf.enable = true;
 
   home-manager.users.dmalakhov = {
@@ -21,13 +26,37 @@
       userName = "Dmitriy Malakhov";
       userEmail = "d.malakhov@yadro.com";
     };
-  	programs.waybar = {  
+    programs.waybar = {
       enable = true;
-  		style = ./programs/waybar/style.css;
-  		settings = {
+      style = ./programs/waybar/style.css;
+      settings = {
         mainBar = builtins.fromJSON (builtins.readFile ./programs/waybar/config.json);
-    	};
-  	};
+      };
+    };
+
+    programs.zsh = {
+      enable = true;
+      enableCompletion = true;
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
+      enableVteIntegration = true;
+
+      sessionVariables = {
+        EDITOR = "hx";
+        TERMINAL = "kitty";
+        BROWSER = "qutebrowser";
+      };
+
+      shellAliases = {
+        update = "sudo nixos-rebuild switch";
+      };
+
+      oh-my-zsh = {
+        enable = true;
+        plugins = [ "git" ];
+        theme = "candy";
+      };
+    };
 
     programs.helix = {
       enable = true;
@@ -41,22 +70,35 @@
         nil
       ];
       settings = builtins.fromTOML (builtins.readFile ./programs/helix/config.toml);
-    }; 
+    };
     home.file.".config/kitty".source = ./programs/kitty;
     home.file.".config/wofi".source = ./programs/wofi;
     home.file.".config/wlogout".source = ./programs/wlogout;
+    home.file.".config/hypr".source = ./programs/hypr;
+    home.file.".config/dunst".source = ./programs/dunst;
 
-  
     xdg.desktopEntries = {
       talk = {
         name = "Talk";
         genericName = "Conferencing";
         exec = "appimage-run /home/dmalakhov/bin/ktalk.AppImage";
         terminal = false;
-        categories = [];
+        categories = [ ];
         mimeType = [ "x-scheme-handler/ktalk" ];
       };
-      mattermost = {                                                                                                                                                                                    name = "Mattermost";                                                                                                                                                                            comment = "Mattermost Desktop application for Linux";                                                                                                                                           type = "Application";                                                                                                                                                                           exec = "${pkgs.mattermost-desktop}/bin/mattermost-desktop %U";                                                                                                                                  icon = "${pkgs.mattermost-desktop}/share/mattermost-desktop/app_icon.png";                                                                                                                      terminal = false;                                                                                                                                                                               categories = [ "Network" "InstantMessaging"];                                                                                                                                                   mimeType = [ "x-scheme-handler/mattermost" ];                                                                                                                                                 }; 
+      mattermost = {
+        name = "Mattermost";
+        comment = "Mattermost Desktop application for Linux";
+        type = "Application";
+        exec = "${pkgs.mattermost-desktop}/bin/mattermost-desktop %U";
+        icon = "${pkgs.mattermost-desktop}/share/mattermost-desktop/app_icon.png";
+        terminal = false;
+        categories = [
+          "Network"
+          "InstantMessaging"
+        ];
+        mimeType = [ "x-scheme-handler/mattermost" ];
+      };
     };
   };
 }

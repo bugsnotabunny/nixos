@@ -1,21 +1,21 @@
 { pkgs, ... }:
 let
-  # username = "dmalakhov";
-  # usernameFull = "Dmitriy Malakhov";
+  username = "dmalakhov";
+  usernameFull = "Dmitriy Malakhov";
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
 in
 {
   imports = [
     ./hardware-configuration.nix
-    
+
     ./locale.nix
     ./bluetooth.nix
     ./cpu-scaling.nix
-    ./graphics-driver.nix 
+    ./graphics-driver.nix
     ./networking.nix
 
     ./shell.nix
-    ./greeter.nix 
+    ./greeter.nix
     ./users.nix
     ./xdg.nix
     ./docker.nix
@@ -26,7 +26,7 @@ in
     (import "${home-manager}/nixos")
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;  
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -60,12 +60,13 @@ in
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "unstable"; # Did you read the comment?
 
-  # home.enableNixpkgsReleaseCheck = false;
   home-manager.backupFileExtension = "backup";
 
   home-manager.users.dmalakhov = {
-    home.stateVersion = "24.05";
-
+    home = {
+      enableNixpkgsReleaseCheck = false;
+      stateVersion = "24.05";
+    };
     gtk = {
       enable = true;
       theme = {
@@ -79,7 +80,5 @@ in
     services.blueman-applet.enable = true;
   };
 
-  security.pki.certificateFiles = [
-    ./tel.yadro.com.crt
-  ];
+  security.pki.certificateFiles = [ ./tel.yadro.com.crt ];
 }
