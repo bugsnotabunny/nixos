@@ -1,8 +1,19 @@
 { pkgs, ... }:
 {
-  nixpkgs.config.allowUnfree = true;
-
   environment.systemPackages = with pkgs; [
+    bazel
+    conan
+    wayland-utils
+    lldb_18
+    vscode-extensions.vadimcn.vscode-lldb
+    chromium
+    ffmpeg-full
+    uwufetch
+    gimp
+    asciiquarium
+    discord
+    smile
+    playerctl
     nixfmt-rfc-style
     ranger
     cloc
@@ -66,26 +77,16 @@
     virtualenv
     python311Packages.pip
     clang-tools
-    lldb
     libgcc
-    rustup
-
     qbittorrent
     qutebrowser
     libreoffice-fresh
     vscode
     imagemagick
     neofetch
+    xfce.thunar
+    xfce.thunar-volman
+    xfce.thunar-archive-plugin
   ];
 
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-color-emoji
-    (nerdfonts.override {
-      fonts = [
-        "JetBrainsMono"
-        "Iosevka"
-      ];
-    })
-  ];
 }

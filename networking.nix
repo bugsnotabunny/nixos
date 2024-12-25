@@ -1,7 +1,8 @@
-{ pkgs, ... }:
+{ hostname }:
+{ config, pkgs, ... }:
 {
   networking = {
-    hostName = "nixos";
+    hostName = hostname;
     networkmanager.enable = true;
   };
 

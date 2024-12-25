@@ -1,30 +1,31 @@
 { pkgs, ... }:
 let
-  username = "dmalakhov";
   usernameFull = "Dmitriy Malakhov";
+  username = "dmalakhov";
+  hostname = "nixos";
+  isWorkstation = false;
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+  timezone = "Europe/Moscow";
 in
 {
   imports = [
     ./hardware-configuration.nix
-
     ./locale.nix
     ./bluetooth.nix
     ./cpu-scaling.nix
     ./graphics-driver.nix
-    ./networking.nix
-
     ./shell.nix
     ./greeter.nix
-    ./users.nix
-    ./xdg.nix
-    ./docker.nix
-
     ./pkgs.nix
-    ./programs.nix
+    ./fonts.nix
 
+    (import ./docker.nix { inherit isWorkstation; })
+    (import ./networking.nix { inherit hostname; })
+    (import ./home.nix { inherit username usernameFull; })
     (import "${home-manager}/nixos")
   ];
+
+  nixpkgs.config.allowUnfree = true;
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.loader.systemd-boot.enable = true;
@@ -50,7 +51,9 @@ in
   security.pam.services.gdm.enableGnomeKeyring = true;
   services.gnome.gnome-keyring.enable = true;
 
-  time.timeZone = "Europe/Moscow";
+  time.timeZone = timezone;
+
+  security.pki.certificateFiles = if isWorkstation then [ ./tel.yadro.com.crt ] else [];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -60,25 +63,4 @@ in
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "unstable"; # Did you read the comment?
 
-  home-manager.backupFileExtension = "backup";
-
-  home-manager.users.dmalakhov = {
-    home = {
-      enableNixpkgsReleaseCheck = false;
-      stateVersion = "24.05";
-    };
-    gtk = {
-      enable = true;
-      theme = {
-        name = "Tokyonight-Dark";
-        package = pkgs.tokyo-night-gtk;
-      };
-      iconTheme = {
-        name = "Tokyonight-Dark";
-      };
-    };
-    services.blueman-applet.enable = true;
-  };
-
-  security.pki.certificateFiles = [ ./tel.yadro.com.crt ];
 }

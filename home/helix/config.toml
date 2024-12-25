@@ -24,7 +24,3 @@ hidden = false
 "esc" = ["collapse_selection", "normal_mode", ":wa"]
 [keys.insert]
 "esc" = ["normal_mode", ":wa"]
-
-[[language]]
-name = "nix"
-formatter = { command = "nixfmt" }

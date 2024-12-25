@@ -4,7 +4,7 @@
 show=drun
 prompt=Apps
 normal_window=true
-layer=top
+layer=bottom
 term=foot
 
 ## Geometry

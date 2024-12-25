@@ -1,8 +1,10 @@
-{ pkgs, ... }:
+{ isWorkstation }:
+{ config, pkgs, ... }:
 {
   virtualisation.docker.enable = true;
   virtualisation.docker.enableOnBoot = false;
-  virtualisation.docker.daemon.settings = {
+  virtualisation.docker.daemon.settings = if isWorkstation
+  then{
     insecure-registries = [
       "http://harbor.mfg.yadro.com:8888"
       "http://172.17.10.47:8000"
@@ -24,7 +26,6 @@
       "172.17.10.2"
       "172.17.100.2"
     ];
+  } else {  
   };
-
-  environment.systemPackages = with pkgs; [ docker-buildx ];
 }
