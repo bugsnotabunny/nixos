@@ -1,7 +1,10 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    bazel
+    ccache
+    gnumake
+    cmake
+    sshfs
     conan
     wayland-utils
     lldb_18
@@ -21,25 +24,13 @@
     thunderbird
     pavucontrol
     vlc
-    alacritty
     drawio
     unzip
-    gnumake
     krita
-    boost
-    valgrind
     gf
-    gdb
     evince
-    tigervnc
     gitui
-    firefox
     gparted
-    cmake
-    ninja
-    ccache
-    mold
-    lld
     fastfetch
     tree
     curl
@@ -48,7 +39,6 @@
     duf
     btop
     appimage-run
-    docker-compose
     xdg_utils
 
     wl-clipboard
@@ -89,4 +79,5 @@
     xfce.thunar-archive-plugin
   ];
 
+  programs.dconf.enable = true;
 }

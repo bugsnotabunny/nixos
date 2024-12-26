@@ -16,11 +16,7 @@
   };
 
   home-manager.backupFileExtension = "backup";
-  home-manager.users.${username} = 
-    import ./home/waybar/mod.nix // 
-    import ./home/hypr/mod.nix //
-    import ./home/helix/mod.nix { inherit pkgs; } //
-  {
+  home-manager.users.${username} = {
     home = {
       enableNixpkgsReleaseCheck = false;
       stateVersion = "24.05";
@@ -61,11 +57,37 @@
       };
     };
 
+    programs.waybar = {
+      enable = true;
+      style = ./home/waybar/style.css;
+      settings = {
+        mainBar = builtins.fromJSON (builtins.readFile ./home/waybar/config.json);
+      };
+    };
+
+    programs.helix = {
+      enable = true;
+      defaultEditor = true;
+      extraPackages = with pkgs; [
+        cmake-language-server
+        vscode-langservers-extracted
+        rust-analyzer
+        lua-language-server
+        marksman
+        nil
+      ];
+      settings = builtins.fromTOML (builtins.readFile ./home/helix/config.toml);
+    };
+
     programs.git = {
       enable = true;
+      lfs.enable = true;
       userName = usernameFull;
       userEmail = "d.malakhov@yadro.com";
-    };
+      extraConfig = {
+        push.autoSetupRemote = true;
+      };
+     };
 
     programs.zsh = {
       enable = true;
@@ -80,6 +102,10 @@
         BROWSER = "qutebrowser";
       };
 
+      shellAliases = {
+        kssh = "kitten ssh";
+      };
+
       oh-my-zsh = {
         enable = true;
         plugins = [ "git" ];
@@ -91,6 +117,7 @@
     home.file.".config/wofi".source = ./home/wofi;
     home.file.".config/wlogout".source = ./home/wlogout;
     home.file.".config/dunst".source = ./home/dunst;
+    home.file.".config/hypr".source = ./home/hypr;
 
     xdg.desktopEntries = {
       talk = {

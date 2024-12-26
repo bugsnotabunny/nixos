@@ -4,8 +4,8 @@ let
   username = "dmalakhov";
   hostname = "nixos";
   isWorkstation = false;
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
   timezone = "Europe/Moscow";
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
 in
 {
   imports = [
@@ -53,7 +53,8 @@ in
 
   time.timeZone = timezone;
 
-  security.pki.certificateFiles = if isWorkstation then [ ./tel.yadro.com.crt ] else [];
+  security.pki.certificateFiles = if isWorkstation 
+  then [ ./tel.yadro.com.crt ] else [];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
