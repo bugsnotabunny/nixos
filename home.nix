@@ -86,6 +86,7 @@
       userEmail = "d.malakhov@yadro.com";
       extraConfig = {
         push.autoSetupRemote = true;
+        pull.rebase = true;
       };
      };
 
