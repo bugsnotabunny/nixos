@@ -1,10 +1,11 @@
-{ graphicsDriver, pkgs, config, lib, ... }:
+{ graphicsDriver }:
+{ pkgs, config, lib, ... }:
 if graphicsDriver == "intel" then
 {
   nixpkgs.config.packageOverrides = pkgs: {
     intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
   };
-  hardware.graphics = {
+  hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver
@@ -19,14 +20,10 @@ if graphicsDriver == "intel" then
 }
 else if graphicsDriver == "nvidia" then
 {
-  hardware.graphics.enable = true;
+  hardware.opengl.enable = true;
   hardware.nvidia = {
     open = false;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
-    offload = {
-      enable = lib.mkOverride 990 true;
-      enableOffloadCmd = lib.mkIf config.hardware.nvidia.prime.offload.enable true; # Provides `nvidia-offload` command.
-    };
     # Hardware should specify the bus ID for intel/nvidia devices
   };
 }

@@ -9,12 +9,12 @@ in
     ./locale.nix
     ./bluetooth.nix
     ./cpu-scaling.nix
-    ./graphics-driver.nix
     ./shell.nix
     ./greeter.nix
     ./pkgs.nix
     ./fonts.nix
 
+    (import ./graphics-driver.nix { graphicsDriver = config.graphicsDriver; })
     (import ./docker.nix { isWorkstation = config.isWorkstation; })
     (import ./networking.nix { hostname = config.hostname; })
     (import ./home.nix { username = config.username; usernameFull = config.usernameFull; })
