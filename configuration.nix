@@ -1,10 +1,6 @@
 { pkgs, ... }:
 let
-  usernameFull = "Dmitriy Malakhov";
-  username = "dmalakhov";
-  hostname = "nixos";
-  isWorkstation = false;
-  timezone = "Europe/Moscow";
+  config = import ./config.nix;
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
 in
 {
@@ -19,9 +15,9 @@ in
     ./pkgs.nix
     ./fonts.nix
 
-    (import ./docker.nix { inherit isWorkstation; })
-    (import ./networking.nix { inherit hostname; })
-    (import ./home.nix { inherit username usernameFull; })
+    (import ./docker.nix { isWorkstation = config.isWorkstation; })
+    (import ./networking.nix { hostname = config.hostname; })
+    (import ./home.nix { username = config.username; usernameFull = config.usernameFull; })
     (import "${home-manager}/nixos")
   ];
 
@@ -51,9 +47,9 @@ in
   security.pam.services.gdm.enableGnomeKeyring = true;
   services.gnome.gnome-keyring.enable = true;
 
-  time.timeZone = timezone;
+  time.timeZone = config.timezone;
 
-  security.pki.certificateFiles = if isWorkstation 
+  security.pki.certificateFiles = if config.isWorkstation 
   then [ ./tel.yadro.com.crt ] else [];
 
   # This value determines the NixOS release from which the default

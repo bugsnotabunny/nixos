@@ -21,7 +21,6 @@
     ranger
     cloc
     teams-for-linux
-    thunderbird
     pavucontrol
     vlc
     drawio
@@ -40,6 +39,8 @@
     btop
     appimage-run
     xdg_utils
+    evolution
+    evolution-ews
 
     wl-clipboard
     pamixer
