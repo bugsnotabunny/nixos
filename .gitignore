@@ -1,3 +1,4 @@
 **/result
 *.crt
 config.nix
+hardware-configuration.nix
