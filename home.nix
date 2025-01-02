@@ -6,11 +6,11 @@
     isNormalUser = true;
     description = usernameFull;
     extraGroups = [
-      "video"
-      "input"
       "audio"
       "docker"
+      "input"
       "networkmanager"
+      "video"
       "wheel"
     ];
   };

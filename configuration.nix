@@ -5,20 +5,20 @@ let
 in
 {
   imports = [
-    ./hardware-configuration.nix
-    ./locale.nix
     ./bluetooth.nix
     ./cpu-scaling.nix
-    ./shell.nix
-    ./greeter.nix
-    ./pkgs.nix
     ./fonts.nix
+    ./greeter.nix
+    ./hardware-configuration.nix
+    ./locale.nix
+    ./pkgs.nix
+    ./shell.nix
 
-    (import ./graphics-driver.nix { graphicsDriver = config.graphicsDriver; })
+    (import "${home-manager}")
     (import ./docker.nix { isWorkstation = config.isWorkstation; })
-    (import ./networking.nix { hostname = config.hostname; })
+    (import ./graphics-driver.nix { graphicsDriver = config.graphicsDriver; })
     (import ./home.nix { username = config.username; usernameFull = config.usernameFull; })
-    (import "${home-manager}/nixos")
+    (import ./networking.nix { hostname = config.hostname; })
   ];
 
   nixpkgs.config.allowUnfree = true;

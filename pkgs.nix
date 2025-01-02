@@ -2,82 +2,75 @@
 {
   environment.systemPackages = with pkgs; [
     ccache
-    gnumake
+    clang-tools
     cmake
-    sshfs
     conan
-    wayland-utils
-    lldb_18
-    vscode-extensions.vadimcn.vscode-lldb
-    chromium
-    ffmpeg-full
-    uwufetch
-    gimp
-    asciiquarium
-    discord
-    smile
-    playerctl
-    nixfmt-rfc-style
-    ranger
-    cloc
-    teams-for-linux
-    pavucontrol
-    vlc
     drawio
-    unzip
+    gnumake
     krita
-    gf
-    evince
-    gitui
-    gparted
-    fastfetch
-    tree
-    curl
-    wget
-    git
-    duf
-    btop
-    appimage-run
-    xdg_utils
-    evolution
-    evolution-ews
-
-    wl-clipboard
-    pamixer
-    brightnessctl
-    swaylock
-    dunst
-    grim
-    grimblast
-    wlogout
-    wofi
-    hyprland
-    xfce.thunar
-    xwaylandvideobridge
-    kitty
-    swaybg
-    viewnior
-
-    mattermost-desktop
-    telegram-desktop
-    evolution-ews
-    evolutionWithPlugins
-
+    libgcc
+    lldb_18
     ninja
     python3
-    virtualenv
     python311Packages.pip
-    clang-tools
-    libgcc
+    sshfs
+    teams-for-linux
+    virtualenv
+    vscode-extensions.vadimcn.vscode-lldb
+
+    appimage-run
+    asciiquarium
+    brightnessctl
+    btop
+    chromium
+    cloc
+    curl
+    discord
+    duf
+    dunst
+    evince
+    evolution
+    evolution-ews
+    evolution-ews
+    evolutionWithPlugins
+    fastfetch
+    ffmpeg-full
+    git
+    gitui
+    gparted
+    grim
+    grimblast
+    hyprland
+    imagemagick
+    kitty
+    libreoffice-fresh
+    mattermost-desktop
+    pamixer
+    pavucontrol
+    playerctl
     qbittorrent
     qutebrowser
-    libreoffice-fresh
+    ranger
+    smile
+    swaybg
+    swaylock
+    telegram-desktop
+    tree
+    unzip
+    uwufetch
+    viewnior
+    vlc
     vscode
-    imagemagick
-    neofetch
+    wayland-utils
+    wget
+    wl-clipboard
+    wlogout
+    wofi
+    xdg_utils
     xfce.thunar
-    xfce.thunar-volman
     xfce.thunar-archive-plugin
+    xfce.thunar-volman
+    xwaylandvideobridge
   ];
 
   programs.dconf.enable = true;
