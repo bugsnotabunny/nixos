@@ -14,7 +14,7 @@ in
     ./pkgs.nix
     ./shell.nix
 
-    (import "${home-manager}")
+    (import "${home-manager}/nixos")
     (import ./docker.nix { isWorkstation = config.isWorkstation; })
     (import ./graphics-driver.nix { graphicsDriver = config.graphicsDriver; })
     (import ./home.nix { username = config.username; usernameFull = config.usernameFull; })

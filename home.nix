@@ -105,6 +105,7 @@
 
       shellAliases = {
         kssh = "kitten ssh";
+        nix-zshell = "nix-shell --run zsh";
       };
 
       oh-my-zsh = {

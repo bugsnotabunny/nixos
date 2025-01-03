@@ -9,14 +9,17 @@
       wayland-utils
     ];
 in
-  pkgs.mkShell rec {
+  pkgs.mkShell {
     buildInputs = with pkgs; [
+      alsa-lib
       fontconfig
       pkg-config
       clang
       llvmPackages.bintools
       rustup
+      systemd
     ];
+    nativeBuildInputs = with pkgs; [ pkg-config ];
     PKG_CONFIG_PATH = "${pkgs.alsa-lib}/lib/pkgconfig";
     RUSTC_VERSION = overrides.toolchain.channel;
     # https://github.com/rust-lang/rust-bindgen#environment-variables
