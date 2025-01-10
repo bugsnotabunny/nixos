@@ -1,13 +1,8 @@
-{pkgs, ...}:
-{
+{ pkgs, ... }: {
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-color-emoji
-    (nerdfonts.override {
-      fonts = [
-        "JetBrainsMono"
-        "Iosevka"
-      ];
-    })
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.iosevka-term-slab
   ];
 }
