@@ -1,11 +1,14 @@
 { pkgs, ... }:
 let
   config = import ./config.nix;
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
-in
-{
+  home-manager = builtins.fetchTarball
+    "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+in {
   imports = [
-     "${builtins.fetchTarball "https://github.com/nix-community/disko/archive/master.tar.gz"}/module.nix"
+    "${
+      builtins.fetchTarball
+      "https://github.com/nix-community/disko/archive/master.tar.gz"
+    }/module.nix"
     ./bluetooth.nix
     ./cpu-scaling.nix
     ./fonts.nix
@@ -15,11 +18,15 @@ in
     ./pkgs.nix
     ./shell.nix
 
-    (import ./disk-config.nix) { device = config.rootDevice; }
+    (import ./disko.nix)
+    { device = config.rootDevice; }
     (import "${home-manager}/nixos")
     (import ./docker.nix { isWorkstation = config.isWorkstation; })
     (import ./graphics-driver.nix { graphicsDriver = config.graphicsDriver; })
-    (import ./home.nix { username = config.username; usernameFull = config.usernameFull; })
+    (import ./home.nix {
+      username = config.username;
+      usernameFull = config.usernameFull;
+    })
     (import ./networking.nix { hostname = config.hostname; })
   ];
 
@@ -51,8 +58,8 @@ in
 
   time.timeZone = config.timezone;
 
-  security.pki.certificateFiles = if config.isWorkstation 
-  then [ ./tel.yadro.com.crt ] else [];
+  security.pki.certificateFiles =
+    if config.isWorkstation then [ ./tel.yadro.com.crt ] else [ ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
