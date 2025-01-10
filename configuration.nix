@@ -5,6 +5,7 @@ let
 in
 {
   imports = [
+     "${builtins.fetchTarball "https://github.com/nix-community/disko/archive/master.tar.gz"}/module.nix"
     ./bluetooth.nix
     ./cpu-scaling.nix
     ./fonts.nix
@@ -14,6 +15,7 @@ in
     ./pkgs.nix
     ./shell.nix
 
+    (import ./disk-config.nix) { device = config.rootDevice; }
     (import "${home-manager}/nixos")
     (import ./docker.nix { isWorkstation = config.isWorkstation; })
     (import ./graphics-driver.nix { graphicsDriver = config.graphicsDriver; })
