@@ -65,6 +65,15 @@
       };
     };
 
+    programs.neovim = {
+      enable = true;
+      viAlias = true;
+      vimAlias = true;
+      extraConfig = ''
+        set number relativenumber
+      '';
+    };
+
     programs.helix = {
       enable = true;
       defaultEditor = true;
