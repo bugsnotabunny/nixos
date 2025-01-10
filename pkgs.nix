@@ -31,8 +31,6 @@
     evince
     evolution
     evolution-ews
-    evolution-ews
-    evolutionWithPlugins
     fastfetch
     ffmpeg-full
     git
