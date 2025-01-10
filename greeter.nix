@@ -1,5 +1,9 @@
+{ ... }:
 {
   services.greetd.enable = true;
+  services.greetd.settings.default_session = {
+    command = "Hyprland";
+  };
 
   programs.regreet = {
     enable = true;
