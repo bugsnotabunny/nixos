@@ -31,7 +31,6 @@
     chromium
     cloc
     curl
-    discord
     duf
     dunst
     evince
@@ -44,7 +43,6 @@
     gparted
     grim
     grimblast
-    hyprland
     imagemagick
     kitty
     libreoffice-fresh
@@ -70,12 +68,17 @@
     wl-clipboard
     wlogout
     wofi
-    xdg_utils
+    xdg-utils
     xfce.thunar
     xfce.thunar-archive-plugin
     xfce.thunar-volman
     xwaylandvideobridge
   ];
+
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
 
   programs.steam = {
     enable = true;

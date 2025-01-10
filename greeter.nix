@@ -1,10 +1,6 @@
-{ ... }:
+{ lib, ... }:
 {
   services.greetd.enable = true;
-  services.greetd.settings.default_session = {
-    command = "Hyprland";
-  };
-
   programs.regreet = {
     enable = true;
     settings = {
@@ -12,9 +8,9 @@
 
       GTK = {
         application_prefer_dark_theme = true;
-        cursor_theme_name = "Tokionight Dark";
-        icon_theme_name = "Tokionight Dark";
-        theme_name = "Tokionight Dark";
+        cursor_theme_name = lib.mkDefault "Tokionight Dark";
+        icon_theme_name = lib.mkDefault "Tokionight Dark";
+        theme_name = lib.mkDefault "Tokionight Dark";
 
         # Font name and size
         font_name = "Cantarell 16";

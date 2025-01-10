@@ -18,11 +18,10 @@ in {
     ./pkgs.nix
     ./shell.nix
 
-    (import ./disko.nix)
-    { device = config.rootDevice; }
+    (import ./disko.nix { device = config.rootDevice; })
     (import "${home-manager}/nixos")
     (import ./docker.nix { isWorkstation = config.isWorkstation; })
-    (import ./graphics-driver.nix { graphicsDriver = config.graphicsDriver; })
+    (import ./graphics-driver.nix { gpuSettings = config.gpuSettings; })
     (import ./home.nix {
       username = config.username;
       usernameFull = config.usernameFull;
@@ -46,7 +45,6 @@ in {
     };
     jack.enable = true;
   };
-  sound.enable = true;
 
   services.gvfs.enable = true;
   services.udisks2.enable = true;

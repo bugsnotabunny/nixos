@@ -1,7 +1,5 @@
-{
-  device ? throw "Set this to your disk device, e.g. /dev/sda",
-  ...
-}: {
+{ device ? throw "Set this to your disk device, e.g. /dev/sda" }:
+{ ... }: {
   disko.devices = {
     disk = {
       main = {
@@ -26,7 +24,7 @@
               end = "-0";
               content = {
                 type = "filesystem";
-                format = "bcachefs";
+                format = "btrfs";
                 mountpoint = "/";
               };
             };
@@ -37,9 +35,7 @@
     nodev = {
       "/tmp" = {
         fsType = "tmpfs";
-        mountOptions = [
-          "size=4G"
-        ];
+        mountOptions = [ "size=4G" ];
       };
     };
   };
