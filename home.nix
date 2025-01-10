@@ -85,6 +85,12 @@
         marksman
         nil
       ];
+      languages.language = [{
+          name = "nix";
+          auto-format = true;
+          formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
+        }
+      ];
       settings = builtins.fromTOML (builtins.readFile ./home/helix/config.toml);
     };
 

@@ -21,10 +21,16 @@ if graphicsDriver == "intel" then
 else if graphicsDriver == "nvidia" then
 {
   hardware.opengl.enable = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     open = false;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     # Hardware should specify the bus ID for intel/nvidia devices
+    prime = {
+      sync.enable = true;
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:2:0:0";
+    };
   };
 }
 else

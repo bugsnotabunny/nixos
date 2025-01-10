@@ -1,6 +1,12 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+
+    vulkan-tools
+    wine
+    firefox
+    lutris
+
     ccache
     clang-tools
     cmake
@@ -70,6 +76,13 @@
     xfce.thunar-volman
     xwaylandvideobridge
   ];
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+  };
 
   programs.dconf.enable = true;
 }
