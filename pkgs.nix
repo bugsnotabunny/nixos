@@ -79,7 +79,6 @@
     xfce.thunar
     xfce.thunar-archive-plugin
     xfce.thunar-volman
-    xwaylandvideobridge
   ];
 
   programs.hyprland = {
