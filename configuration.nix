@@ -1,14 +1,9 @@
 { pkgs, ... }:
-let
-  config = import ./config.nix;
-  home-manager = builtins.fetchTarball
-    "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+let local = import ./local.nix;
 in {
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   imports = [
-    "${
-      builtins.fetchTarball
-      "https://github.com/nix-community/disko/archive/master.tar.gz"
-    }/module.nix"
     ./bluetooth.nix
     ./cpu-scaling.nix
     ./fonts.nix
@@ -17,16 +12,15 @@ in {
     ./locale.nix
     ./pkgs.nix
     ./shell.nix
+    ./networking.nix
 
-    (import ./disko.nix { device = config.rootDevice; })
-    (import "${home-manager}/nixos")
-    (import ./docker.nix { isWorkstation = config.isWorkstation; })
-    (import ./graphics-driver.nix { gpuSettings = config.gpuSettings; })
+    (import ./disko.nix { device = local.rootDevice; })
+    (import ./docker.nix { isWorkstation = local.isWorkstation; })
+    (import ./graphics-driver.nix { gpuSettings = local.gpuSettings; })
     (import ./home.nix {
-      username = config.username;
-      usernameFull = config.usernameFull;
+      username = local.username;
+      usernameFull = local.usernameFull;
     })
-    (import ./networking.nix { hostname = config.hostname; })
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -56,10 +50,10 @@ in {
   security.pam.services.gdm.enableGnomeKeyring = true;
   services.gnome.gnome-keyring.enable = true;
 
-  time.timeZone = config.timezone;
+  time.timeZone = local.timezone;
 
   security.pki.certificateFiles =
-    if config.isWorkstation then [ ./tel.yadro.com.crt ] else [ ];
+    if local.isWorkstation then [ ./tel.yadro.com.crt ] else [ ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
