@@ -1,18 +1,10 @@
 { username, usernameFull }:
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${username} = {
     isNormalUser = true;
     description = usernameFull;
-    extraGroups = [
-      "audio"
-      "docker"
-      "input"
-      "networkmanager"
-      "video"
-      "wheel"
-    ];
+    extraGroups = [ "audio" "docker" "input" "networkmanager" "video" "wheel" ];
   };
 
   home-manager.backupFileExtension = "backup";
@@ -29,6 +21,7 @@
       };
       iconTheme = {
         name = "Tokyonight-Dark";
+        package = pkgs.tokyo-night-gtk;
       };
     };
     services.blueman-applet.enable = true;
@@ -36,7 +29,7 @@
     xdg = {
       mime.enable = true;
 
-       # mime.defaultApplications = {
+      # mime.defaultApplications = {
       #   "text/html" = "qutebrowser.desktop";
       #   "x-scheme-handler/http" = "qutebrowser.desktop";
       #   "x-scheme-handler/https" = "qutebrowser.desktop";
@@ -44,13 +37,13 @@
       #   "x-scheme-handler/unknown" = "qutebrowser.desktop";
       # };
 
-      portal = let packages = with pkgs; [
+      portal = let
+        packages = with pkgs; [
           xdg-desktop-portal-hyprland
           xdg-desktop-portal-wlr
           xdg-desktop-portal-gtk
-      ]; 
-      in
-      {
+        ];
+      in {
         enable = true;
         extraPortals = packages;
         configPackages = packages;
@@ -61,7 +54,8 @@
       enable = true;
       style = ./home/waybar/style.css;
       settings = {
-        mainBar = builtins.fromJSON (builtins.readFile ./home/waybar/config.json);
+        mainBar =
+          builtins.fromJSON (builtins.readFile ./home/waybar/config.json);
       };
     };
 
@@ -86,11 +80,10 @@
         nil
       ];
       languages.language = [{
-          name = "nix";
-          auto-format = true;
-          formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt";
-        }
-      ];
+        name = "nix";
+        auto-format = true;
+        formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt";
+      }];
       settings = builtins.fromTOML (builtins.readFile ./home/helix/config.toml);
     };
 
@@ -103,7 +96,7 @@
         push.autoSetupRemote = true;
         pull.rebase = true;
       };
-     };
+    };
 
     programs.zsh = {
       enable = true;
@@ -150,12 +143,10 @@
         comment = "Mattermost Desktop application for Linux";
         type = "Application";
         exec = "${pkgs.mattermost-desktop}/bin/mattermost-desktop %U";
-        icon = "${pkgs.mattermost-desktop}/share/mattermost-desktop/app_icon.png";
+        icon =
+          "${pkgs.mattermost-desktop}/share/mattermost-desktop/app_icon.png";
         terminal = false;
-        categories = [
-          "Network"
-          "InstantMessaging"
-        ];
+        categories = [ "Network" "InstantMessaging" ];
         mimeType = [ "x-scheme-handler/mattermost" ];
       };
     };

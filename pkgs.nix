@@ -1,9 +1,9 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-
+    p7zip
     vulkan-tools
-    wine
+    wineWowPackages.wayland
+    winetricks
     firefox
     lutris
 
