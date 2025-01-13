@@ -1,14 +1,10 @@
 { isWorkstation }:
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   virtualisation.docker.enable = true;
   virtualisation.docker.enableOnBoot = false;
-  virtualisation.docker.daemon.settings = if isWorkstation
-  then{
-    insecure-registries = [
-      "http://harbor.mfg.yadro.com:8888"
-      "http://172.17.10.47:8000"
-    ];
+  virtualisation.docker.daemon.settings = if isWorkstation then {
+    insecure-registries =
+      [ "http://harbor.mfg.yadro.com:8888" "http://172.17.10.47:8000" ];
     "allow-nondistributable-artifacts" = [ "harbor.mfg.yadro.com:8888" ];
     bip = "10.75.0.1/24";
     default-address-pools = [
@@ -21,11 +17,7 @@
         size = 24;
       }
     ];
-    dns = [
-      "172.17.240.173"
-      "172.17.10.2"
-      "172.17.100.2"
-    ];
-  } else {  
-  };
+    dns = [ "172.17.240.173" "172.17.10.2" "172.17.100.2" ];
+  } else
+    { };
 }

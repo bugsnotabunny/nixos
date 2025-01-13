@@ -10,8 +10,8 @@
   home-manager.backupFileExtension = "backup";
   home-manager.users.${username} = {
     home = {
-      enableNixpkgsReleaseCheck = false;
-      stateVersion = "24.05";
+      enableNixpkgsReleaseCheck = true;
+      stateVersion = "25.05";
     };
     gtk = {
       enable = true;
@@ -71,14 +71,7 @@
     programs.helix = {
       enable = true;
       defaultEditor = true;
-      extraPackages = with pkgs; [
-        cmake-language-server
-        vscode-langservers-extracted
-        rust-analyzer
-        lua-language-server
-        marksman
-        nil
-      ];
+      extraPackages = with pkgs; [ marksman nil ];
       languages.language = [{
         name = "nix";
         auto-format = true;

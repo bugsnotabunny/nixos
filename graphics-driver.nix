@@ -24,6 +24,7 @@ if gpuSettings.id == "intel" then {
     # Hardware should specify the bus ID for intel/nvidia devices
     prime = gpuSettings.nvidiaPrime;
   };
+  environment.systemPackages = with pkgs; [ gpustat ];
 } else {
   a = assert false; "should set graphicsDriver approptiately";
 }

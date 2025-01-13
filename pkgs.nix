@@ -1,28 +1,25 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    p7zip
-    vulkan-tools
-    wineWowPackages.wayland
-    winetricks
-    firefox
-    lutris
-
     ccache
     clang-tools
     cmake
+    cmake-language-server
     conan
     drawio
     gnumake
     krita
     libgcc
     lldb_18
+    lua-language-server
     ninja
     python3
     python311Packages.pip
+    rust-analyzer
     sshfs
     teams-for-linux
     virtualenv
     vscode-extensions.vadimcn.vscode-lldb
+    vscode-langservers-extracted
 
     appimage-run
     asciiquarium
@@ -38,6 +35,8 @@
     evolution-ews
     fastfetch
     ffmpeg-full
+    firefox
+    firefox
     git
     gitui
     gparted
@@ -46,7 +45,10 @@
     imagemagick
     kitty
     libreoffice-fresh
+    lutris
+    lutris
     mattermost-desktop
+    p7zip
     pamixer
     pavucontrol
     playerctl
@@ -63,8 +65,13 @@
     viewnior
     vlc
     vscode
+    vulkan-tools
+    vulkan-tools
     wayland-utils
     wget
+    wine
+    winetricks
+    wineWowPackages.wayland
     wl-clipboard
     wlogout
     wofi
