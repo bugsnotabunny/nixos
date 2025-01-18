@@ -1,26 +1,18 @@
 { pkgs }:
 let
   version = "3.0.0";
-  appimageFile = pkgs.fetchurl {
+  pname = "ktalk";
+  system = "x86_64-linux";
+
+  src = pkgs.fetchurl {
     url =
       "https://st.ktalk.host/ktalk-app/linux/ktalk${version}x86_64.AppImage";
     hash = "sha256-SngWAEYF5rK5iOc/38A0C0LwZCrpLn38knyCPROxZ2k=";
   };
 
   ktalk = pkgs.appimageTools.wrapType2 {
-    pname = "ktalk";
-    version = version;
-    system = "x86_64-linux";
-    src = appimageFile;
-
-    buildInputs = with pkgs; [ appimage-run ];
-    phases = [ "installPhase" ];
-    outputs = [ "out" ];
-
-    installPhase = let
-      runScript = ''
-        #!${pkgs.bash}/bin/bash
-                  appimage-run -w ${appimageFile}'';
+    inherit pname version system src;
+    extraInstallCommands = let
       desktopEntry = ''
         [Desktop Entry]
                 Exec=ktalk
@@ -31,12 +23,8 @@ let
                 Type=Application
                 Version=${version}'';
     in ''
-      mkdir -p $out/bin
       mkdir -p $out/share/applications
-      echo "${runScript}" >$out/bin/ktalk
-      chmod 555 $out/bin/ktalk
-      echo "${desktopEntry}" >$out/share/applications/ktalk.desktop
-    '';
+                echo "${desktopEntry}" >$out/share/applications/ktalk.desktop'';
   };
 in ktalk
 

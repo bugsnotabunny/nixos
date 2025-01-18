@@ -9,11 +9,9 @@
 
   home-manager.backupFileExtension = "backup";
   home-manager.users.${username} = { pkgs, ... }: {
-    nixpkgs.overlays = [ (import ./pkgs) ];
     home = {
       enableNixpkgsReleaseCheck = true;
       stateVersion = "25.05";
-      packages = with pkgs; [ ktalk ];
     };
     gtk = {
       enable = true;
@@ -29,6 +27,7 @@
     services.blueman-applet.enable = true;
 
     xdg = {
+      enable = true;
       mime.enable = true;
 
       # mime.defaultApplications = {
@@ -124,15 +123,6 @@
     home.file.".config/dunst".source = ./home/dunst;
     home.file.".config/hypr".source = ./home/hypr;
 
-    xdg.desktopEntries = {
-      talk = {
-        name = "Talk";
-        genericName = "Conferencing";
-        exec = "appimage-run /home/dmalakhov/bin/ktalk.AppImage";
-        terminal = false;
-        categories = [ ];
-        mimeType = [ "x-scheme-handler/ktalk" ];
-      };
-    };
+    xdg.desktopEntries = { };
   };
 }

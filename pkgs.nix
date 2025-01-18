@@ -1,5 +1,7 @@
 { username }:
 { pkgs, ... }: {
+  nixpkgs.overlays = [ (import ./pkgs) ];
+
   environment.systemPackages = with pkgs; [
     ccache
     clang-tools
@@ -22,7 +24,7 @@
     vscode-extensions.vadimcn.vscode-lldb
     vscode-langservers-extracted
 
-    appimage-run
+    ktalk
     asciiquarium
     brightnessctl
     btop
