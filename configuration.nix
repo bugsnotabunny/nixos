@@ -10,10 +10,10 @@ in {
     ./greeter.nix
     ./hardware-configuration.nix
     ./locale.nix
-    ./pkgs.nix
     ./shell.nix
     ./networking.nix
 
+    (import ./pkgs.nix { username = local.username; })
     (import ./disko.nix { device = local.rootDevice; })
     (import ./docker.nix { isWorkstation = local.isWorkstation; })
     (import ./graphics-driver.nix { gpuSettings = local.gpuSettings; })

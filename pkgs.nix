@@ -1,3 +1,4 @@
+{ username }:
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     ccache

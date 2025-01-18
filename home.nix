@@ -8,10 +8,12 @@
   };
 
   home-manager.backupFileExtension = "backup";
-  home-manager.users.${username} = {
+  home-manager.users.${username} = { pkgs, ... }: {
+    nixpkgs.overlays = [ (import ./pkgs) ];
     home = {
       enableNixpkgsReleaseCheck = true;
       stateVersion = "25.05";
+      packages = with pkgs; [ ktalk ];
     };
     gtk = {
       enable = true;
@@ -130,17 +132,6 @@
         terminal = false;
         categories = [ ];
         mimeType = [ "x-scheme-handler/ktalk" ];
-      };
-      mattermost = {
-        name = "Mattermost";
-        comment = "Mattermost Desktop application for Linux";
-        type = "Application";
-        exec = "${pkgs.mattermost-desktop}/bin/mattermost-desktop %U";
-        icon =
-          "${pkgs.mattermost-desktop}/share/mattermost-desktop/app_icon.png";
-        terminal = false;
-        categories = [ "Network" "InstantMessaging" ];
-        mimeType = [ "x-scheme-handler/mattermost" ];
       };
     };
   };
