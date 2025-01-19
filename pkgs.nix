@@ -5,7 +5,6 @@
     asciiquarium
     brightnessctl
     btop
-    krita
     cloc
     curl
     duf
@@ -21,6 +20,7 @@
     grimblast
     imagemagick
     kitty
+    krita
     libreoffice-fresh
     p7zip
     pamixer

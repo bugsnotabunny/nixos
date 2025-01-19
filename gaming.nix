@@ -1,7 +1,7 @@
 { lib, config, pkgs, ... }: {
   options = with lib; { doGaming = mkEnableOption { }; };
 
-  config = lib.mkIf (config.isWorkstation) {
+  config = lib.mkIf (config.doGaming) {
     environment.systemPackages = with pkgs; [
       lutris
       vulkan-tools
