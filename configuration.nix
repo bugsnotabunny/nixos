@@ -23,8 +23,13 @@
 
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
-    loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
+    loader.grub = {
+      enable = true;
+      devices = [ "nodev" ];
+      efiSupport = true;
+      useOSProber = true;
+    };
   };
 
   services.pipewire = {

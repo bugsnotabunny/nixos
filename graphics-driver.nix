@@ -8,9 +8,18 @@
         enable = mkEnableOption { };
         enableOffloadCmd = mkEnableOption { };
       };
-      nvidiaBusId = mkOption { type = types.str; };
-      intelBusId = mkOption { type = types.str; };
-      amdgpuBusId = mkOption { type = types.str; };
+      nvidiaBusId = mkOption {
+        type = types.str;
+        default = "";
+      };
+      intelBusId = mkOption {
+        type = types.str;
+        default = "";
+      };
+      amdgpuBusId = mkOption {
+        type = types.str;
+        default = "";
+      };
     };
   };
 
@@ -39,6 +48,7 @@
     })
 
     (lib.mkIf config.gpu.nvidia {
+      services.xserver.videoDrivers = [ "nvidia" ];
 
       hardware.nvidia = {
         open = false;
