@@ -2,6 +2,7 @@
   networking = {
     hostName = "nixos";
     networkmanager.enable = true;
+    networkmanager.wifi.powersave = true;
   };
 
   services.openssh.enable = true;

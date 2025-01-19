@@ -1,44 +1,18 @@
-{ username }:
 { pkgs, ... }: {
-  nixpkgs.overlays = [ (import ./pkgs) ];
+  nixpkgs.overlays = [ (import ./pkgsOverlays) ];
 
   environment.systemPackages = with pkgs; [
-    ccache
-    clang-tools
-    cmake
-    cmake-language-server
-    conan
-    drawio
-    gnumake
-    krita
-    libgcc
-    lldb_18
-    lua-language-server
-    ninja
-    python3
-    python311Packages.pip
-    rust-analyzer
-    sshfs
-    teams-for-linux
-    virtualenv
-    vscode-extensions.vadimcn.vscode-lldb
-    vscode-langservers-extracted
-
-    ktalk
     asciiquarium
     brightnessctl
     btop
-    chromium
+    krita
     cloc
     curl
     duf
     dunst
     evince
-    evolution
-    evolution-ews
     fastfetch
     ffmpeg-full
-    firefox
     firefox
     git
     gitui
@@ -48,9 +22,6 @@
     imagemagick
     kitty
     libreoffice-fresh
-    lutris
-    lutris
-    mattermost-desktop
     p7zip
     pamixer
     pavucontrol
@@ -64,17 +35,10 @@
     telegram-desktop
     tree
     unzip
-    uwufetch
     viewnior
     vlc
-    vscode
-    vulkan-tools
-    vulkan-tools
     wayland-utils
     wget
-    wine
-    winetricks
-    wineWowPackages.wayland
     wl-clipboard
     wlogout
     wofi
@@ -88,13 +52,6 @@
     enable = true;
     withUWSM = true;
     xwayland.enable = true;
-  };
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
   };
 
   programs.dconf.enable = true;

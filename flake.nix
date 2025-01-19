@@ -17,6 +17,7 @@
       modules = [
         home-manager.nixosModules.home-manager
         disko.nixosModules.disko
+        ./local.nix
         ./configuration.nix
       ];
     };

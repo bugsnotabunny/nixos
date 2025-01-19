@@ -1,26 +1,22 @@
-{ pkgs, ... }:
-let local = import ./local.nix;
-in {
+{ pkgs, ... }: {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   imports = [
     ./bluetooth.nix
     ./cpu-scaling.nix
+    ./disko.nix
+    ./docker.nix
     ./fonts.nix
+    ./gaming.nix
+    ./graphics-driver.nix
     ./greeter.nix
     ./hardware-configuration.nix
+    ./home.nix
     ./locale.nix
-    ./shell.nix
     ./networking.nix
-
-    (import ./pkgs.nix { username = local.username; })
-    (import ./disko.nix { device = local.rootDevice; })
-    (import ./docker.nix { isWorkstation = local.isWorkstation; })
-    (import ./graphics-driver.nix { gpuSettings = local.gpuSettings; })
-    (import ./home.nix {
-      username = local.username;
-      usernameFull = local.usernameFull;
-    })
+    ./pkgs.nix
+    ./shell.nix
+    ./workstation.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -56,11 +52,6 @@ in {
   security.polkit.enable = true;
   security.pam.services.gdm.enableGnomeKeyring = true;
   services.gnome.gnome-keyring.enable = true;
-
-  time.timeZone = local.timezone;
-
-  security.pki.certificateFiles =
-    if local.isWorkstation then [ ./tel.yadro.com.crt ] else [ ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
