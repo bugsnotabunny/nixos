@@ -32,6 +32,10 @@
           name = "Tokyonight-Dark";
           package = pkgs.tokyo-night-gtk;
         };
+        cursorTheme = {
+          name = "Tokyonight-Dark";
+          package = pkgs.tokyo-night-gtk;
+        };
       };
       services.blueman-applet.enable = true;
 
