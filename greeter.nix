@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{ lib, ... }: {
   services.greetd.enable = true;
   programs.regreet = {
     enable = true;
@@ -16,10 +15,6 @@
         font_name = "Cantarell 16";
       };
     };
-    cageArgs = [
-      "-s"
-      "-m"
-      "last"
-    ];
+    cageArgs = [ "-s" "-m" "last" ];
   };
 }

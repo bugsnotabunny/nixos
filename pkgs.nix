@@ -2,6 +2,8 @@
   nixpkgs.overlays = [ (import ./pkgsOverlays) ];
 
   environment.systemPackages = with pkgs; [
+    gimp
+
     asciiquarium
     brightnessctl
     btop
