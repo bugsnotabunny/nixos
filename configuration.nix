@@ -4,7 +4,7 @@
   imports = [
     ./bluetooth.nix
     ./cpu-scaling.nix
-    ./disko.nix
+    ./disko
     ./docker.nix
     ./fonts.nix
     ./gaming.nix

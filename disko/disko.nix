@@ -1,8 +1,8 @@
-{ device ? throw "Set this to your disk device, e.g. /dev/sda", ... }: {
+{ rootDevice ? throw "Set this to your disk device, e.g. /dev/sda", ... }: {
   disko.devices = {
     disk = {
       main = {
-        inherit device;
+        device = rootDevice;
         type = "disk";
         content = {
           type = "gpt";
@@ -25,6 +25,7 @@
                 type = "filesystem";
                 format = "btrfs";
                 mountpoint = "/";
+                mountOptions = [ "noatime" "compress=zstd" ];
               };
             };
           };
@@ -34,7 +35,7 @@
     nodev = {
       "/tmp" = {
         fsType = "tmpfs";
-        mountOptions = [ "size=4G" ];
+        # mountOptions = [ "size=4G" ];
       };
     };
   };
