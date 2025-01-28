@@ -121,6 +121,7 @@
       },
       "original": {
         "owner": "nixified-ai",
+        "ref": "master",
         "repo": "flake",
         "type": "github"
       }
