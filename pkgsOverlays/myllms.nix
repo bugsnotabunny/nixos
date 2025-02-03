@@ -23,19 +23,19 @@
     passthru = { comfyui.installPaths = [ "loras" ]; };
   };
 
-  stable-diffusion-35-large = fetchResource rec {
-    name = baseNameOf url;
-    url =
-      "https://huggingface.co/stabilityai/stable-diffusion-3.5-large/resolve/main/sd3.5_large.safetensors";
-    sha256 = "sha256-/+96J52RNGJubODUlPuoT8HH5yCzx98tGaCdw3ltj5M=";
-    passthru = { comfyui.installPaths = [ "checkpoints" ]; };
-  };
-
   pixel-art-35-L = fetchResource rec {
     name = baseNameOf url;
     url =
       "https://huggingface.co/nerijs/pixel-art-3.5L/resolve/main/pixel-art-3.5L-v2_000000300.safetensors";
     sha256 = "sha256-r90gyf/c0+AhtzugeSqpRGsfS49UE3xGunrNHbD6vY4=";
     passthru = { comfyui.installPaths = [ "loras" ]; };
+  };
+
+  sd-35-medium = fetchResource rec {
+    name = baseNameOf url;
+    url =
+      "https://huggingface.co/Comfy-Org/stable-diffusion-3.5-fp8/resolve/main/sd3.5_medium_incl_clips_t5xxlfp8scaled.safetensors";
+    sha256 = "sha256-F3johXZ5BCwXbCHNig2nspve1ovgGFV0d/hEGd95us8=";
+    passthru = { comfyui.installPaths = [ "checkpoints" ]; };
   };
 }

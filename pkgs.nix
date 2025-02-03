@@ -2,8 +2,6 @@
   nixpkgs.overlays = [ (import ./pkgsOverlays) ];
 
   environment.systemPackages = with pkgs; [
-    gimp
-
     asciiquarium
     brightnessctl
     btop
@@ -15,6 +13,7 @@
     fastfetch
     ffmpeg-full
     firefox
+    gimp
     git
     gitui
     gparted
