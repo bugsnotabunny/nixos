@@ -7,7 +7,10 @@
       vulkan-tools
       winetricks
       wineWowPackages.wayland
+      mangohud
     ];
+
+    programs.gamemode.enable = true;
 
     programs.steam = {
       enable = true;
