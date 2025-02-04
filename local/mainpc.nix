@@ -5,7 +5,7 @@
     size = 8 * 1024;
   }];
   gpu = {
-    nvidia = true;
+    manufacturer = "nvidia";
     nvidiaPrime = {
       sync.enable = true;
       nvidiaBusId = "PCI:1:0:0";
@@ -27,7 +27,6 @@
 
       sd-35-medium
       pixel-art-35-L
-
     ];
   };
 }
