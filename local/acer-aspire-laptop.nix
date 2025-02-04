@@ -14,7 +14,6 @@
 
   rootDevice = "/dev/nvme0n1";
   username = "banan";
-  isWorkstation = false;
   doGaming = true;
   time.timeZone = "Europe/Moscow";
 }

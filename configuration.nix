@@ -16,7 +16,6 @@
     ./networking.nix
     ./pkgs.nix
     ./shell.nix
-    ./workstation.nix
   ];
 
   nix.settings = {

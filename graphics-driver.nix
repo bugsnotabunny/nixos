@@ -1,7 +1,6 @@
 { pkgs, lib, config, ... }: {
   options.gpu = with lib; {
-    intel = mkEnableOption { };
-    nvidia = mkEnableOption { };
+    manufacturer = mkOption { type = types.enum [ "intel" "nvidia" ]; };
     nvidiaPrime = {
       sync.enable = mkEnableOption { };
       offload = {
@@ -30,11 +29,10 @@
         enable32Bit = true;
       };
 
-      assertions = [{ assertion = config.gpu.intel != config.gpu.nvidia; }];
+      services.xserver.videoDrivers = [ config.gpu.manufacturer ];
     }
 
-    (lib.mkIf config.gpu.intel {
-      services.xserver.videoDrivers = [ "intel" ];
+    (lib.mkIf (config.gpu.manufacturer == "intel") {
       hardware.graphics = {
         extraPackages = with pkgs; [
           intel-media-driver
@@ -47,9 +45,7 @@
       environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
     })
 
-    (lib.mkIf config.gpu.nvidia {
-      services.xserver.videoDrivers = [ "nvidia" ];
-
+    (lib.mkIf (config.gpu.manufacturer == "nvidia") {
       hardware.nvidia = {
         open = false;
         modesetting.enable = true;

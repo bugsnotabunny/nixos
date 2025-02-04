@@ -14,7 +14,6 @@
   };
 
   username = "banan";
-  isWorkstation = false;
   doGaming = true;
   time.timeZone = "Europe/Moscow";
 
