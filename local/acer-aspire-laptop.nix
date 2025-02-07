@@ -4,7 +4,7 @@
     size = 8 * 1024;
   }];
   gpu = {
-    nvidia = true;
+    manufacturer = "nvidia";
     nvidiaPrime = {
       sync.enable = true;
       nvidiaBusId = "PCI:2:0:0";
