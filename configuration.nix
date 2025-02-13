@@ -32,6 +32,7 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+  hardware.enableAllFirmware = true;
 
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
@@ -41,6 +42,7 @@
       devices = [ "nodev" ];
       efiSupport = true;
       useOSProber = true;
+      memtest86.enable = true;
     };
     loader.grub2-theme = {
       enable = true;
@@ -81,7 +83,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "unstable"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
   system.autoUpgrade = {
     enable = true;
     allowReboot = true;

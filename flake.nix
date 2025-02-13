@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixified-ai.url = "github:nixified-ai/flake/master";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,14 +18,13 @@
     };
   };
 
-  outputs = { battery-notifier, nixpkgs, nixified-ai, home-manager, grub2-themes
-    , disko, ... }: {
+  outputs =
+    { battery-notifier, nixpkgs, home-manager, grub2-themes, disko, ... }: {
       system = "x86_64-linux";
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         modules = [
           home-manager.nixosModules.home-manager
           disko.nixosModules.disko
-          nixified-ai.nixosModules.comfyui
           grub2-themes.nixosModules.default
           battery-notifier.homeManagerModule.default
           ./configuration.nix
