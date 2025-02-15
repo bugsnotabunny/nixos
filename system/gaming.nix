@@ -2,13 +2,7 @@
   options = with lib; { doGaming = mkEnableOption { }; };
 
   config = lib.mkIf (config.doGaming) {
-    environment.systemPackages = with pkgs; [
-      lutris
-      vulkan-tools
-      winetricks
-      wineWowPackages.waylandFull
-      mangohud
-    ];
+    environment.systemPackages = with pkgs; [ lutris vulkan-tools mangohud ];
 
     programs.gamemode.enable = true;
 

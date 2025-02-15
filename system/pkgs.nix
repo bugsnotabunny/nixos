@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  nixpkgs.overlays = [ (import ./pkgsOverlays) ];
+  nixpkgs.overlays = [ (import ../pkgsOverlays) ];
 
   environment.systemPackages = with pkgs; [
     asciiquarium

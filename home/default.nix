@@ -66,10 +66,9 @@
 
       programs.waybar = {
         enable = true;
-        style = ./home/waybar/style.css;
+        style = ./waybar/style.css;
         settings = {
-          mainBar =
-            builtins.fromJSON (builtins.readFile ./home/waybar/config.json);
+          mainBar = builtins.fromJSON (builtins.readFile ./waybar/config.json);
         };
       };
 
@@ -78,15 +77,6 @@
         enableZshIntegration = true;
         enableBashIntegration = true;
         options = [ "--cmd cd" "--no-cmd" ];
-      };
-
-      programs.neovim = {
-        enable = true;
-        viAlias = true;
-        vimAlias = true;
-        extraConfig = ''
-          set number relativenumber
-        '';
       };
 
       programs.helix = {
@@ -98,8 +88,7 @@
           auto-format = true;
           formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt";
         }];
-        settings =
-          builtins.fromTOML (builtins.readFile ./home/helix/config.toml);
+        settings = builtins.fromTOML (builtins.readFile ./helix/config.toml);
       };
 
       programs.git = {
@@ -138,11 +127,11 @@
         };
       };
 
-      home.file.".config/kitty".source = ./home/kitty;
-      home.file.".config/wofi".source = ./home/wofi;
-      home.file.".config/wlogout".source = ./home/wlogout;
-      home.file.".config/dunst".source = ./home/dunst;
-      home.file.".config/hypr".source = ./home/hypr;
+      home.file.".config/kitty".source = ./kitty;
+      home.file.".config/wofi".source = ./wofi;
+      home.file.".config/wlogout".source = ./wlogout;
+      home.file.".config/dunst".source = ./dunst;
+      home.file.".config/hypr".source = ./hypr;
 
       xdg.desktopEntries = { };
     };

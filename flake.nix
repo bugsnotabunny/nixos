@@ -27,7 +27,10 @@
           disko.nixosModules.disko
           grub2-themes.nixosModules.default
           battery-notifier.homeManagerModule.default
-          ./configuration.nix
+
+          ./home
+          ./disko
+          ./system
 
           # local/default.nix is effectively a symlink
           # to needed machine-specific config.

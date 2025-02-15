@@ -4,14 +4,12 @@
   imports = [
     ./bluetooth.nix
     ./cpu-scaling.nix
-    ./disko
     ./docker.nix
     ./fonts.nix
     ./gaming.nix
     ./graphics-driver.nix
     ./greeter.nix
     ./hardware-configuration.nix
-    ./home.nix
     ./locale.nix
     ./networking.nix
     ./pkgs.nix
