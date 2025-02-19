@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   rootDevice = "/dev/sda";
   swapDevices = [{
     device = "/var/lib/swapfile";
@@ -13,6 +13,8 @@
       amdgpuBusId = "PCI:8:0:0";
     };
   };
+
+  environment.systemPackages = with pkgs; [ gpt4all-cuda ];
 
   username = "banan";
   doGaming = true;

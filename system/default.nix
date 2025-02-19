@@ -14,6 +14,7 @@
     ./networking.nix
     ./pkgs.nix
     ./shell.nix
+    ./batteries.nix
   ];
 
   nix.settings = {

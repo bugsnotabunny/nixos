@@ -96,6 +96,7 @@
         lfs.enable = true;
         userName = config.usernameFull;
         userEmail = "d.malakhov@yadro.com";
+        signing.format = "ssh";
         extraConfig = {
           push.autoSetupRemote = true;
           pull.rebase = true;

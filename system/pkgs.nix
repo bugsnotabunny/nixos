@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, system, ... }:
+# let zen-browser = zen-browser.packages."${system}".specific;
+{
   nixpkgs.overlays = [ (import ../pkgsOverlays) ];
 
   environment.systemPackages = with pkgs; [

@@ -16,17 +16,26 @@
       url = "github:luisnquin/battery-notifier";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser = {
+      url = "github:MarceColl/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs =
-    { battery-notifier, nixpkgs, home-manager, grub2-themes, disko, ... }: {
-      system = "x86_64-linux";
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+  outputs = { ... }@inputs:
+    let system = "x86_64-linux";
+    in {
+      inherit system;
+      nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem {
         modules = [
-          home-manager.nixosModules.home-manager
-          disko.nixosModules.disko
-          grub2-themes.nixosModules.default
-          battery-notifier.homeManagerModule.default
+          inputs.home-manager.nixosModules.home-manager
+          inputs.disko.nixosModules.disko
+          inputs.grub2-themes.nixosModules.default
+          inputs.battery-notifier.homeManagerModule.default
+          {
+            environment.systemPackages =
+              [ inputs.zen-browser.packages."${system}".specific ];
+          }
 
           ./home
           ./disko
