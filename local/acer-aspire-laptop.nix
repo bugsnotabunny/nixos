@@ -3,6 +3,7 @@
     device = "/var/lib/swapfile";
     size = 8 * 1024;
   }];
+  batteries.enable = true;
   gpu = {
     manufacturer = "nvidia";
     nvidiaPrime = {
