@@ -4,6 +4,7 @@
   nixpkgs.overlays = [ (import ../pkgsOverlays) ];
 
   environment.systemPackages = with pkgs; [
+    zed-editor
     asciiquarium
     brightnessctl
     btop

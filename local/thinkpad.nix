@@ -10,14 +10,7 @@
   username = "dmalakhov";
   usernameFull = "Dmitry Malakhov";
 
-  services.comfyui = {
-    enable = true;
-    acceleration = false;
-    models = with pkgs.myllms; [
-      pokemon-trainer-sprite-pixelart
-      stable-diffusion-xl-base
-    ];
-  };
+  batteries.enable = true;
 
   security.pki.certificateFiles = [ ./tel.yadro.com.crt ];
 
@@ -40,10 +33,10 @@
   };
 
   environment.systemPackages = with pkgs; [
-    ktalk
+    chromium
     evolution
     evolution-ews
-    chromium
+    ktalk
     mattermost-desktop
     vscode
   ];
