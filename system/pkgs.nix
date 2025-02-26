@@ -1,10 +1,9 @@
-{ pkgs, system, ... }:
-# let zen-browser = zen-browser.packages."${system}".specific;
-{
+{ pkgs, ... }: {
   nixpkgs.overlays = [ (import ../pkgsOverlays) ];
 
+  nixpkgs.config.permittedInsecurePackages = [ "olm-3.2.16" ];
+
   environment.systemPackages = with pkgs; [
-    zed-editor
     asciiquarium
     brightnessctl
     btop
@@ -26,6 +25,7 @@
     kitty
     krita
     libreoffice-fresh
+    nheko
     p7zip
     pamixer
     pavucontrol
@@ -51,6 +51,7 @@
     xfce.thunar-archive-plugin
     xfce.thunar-volman
     yazi
+    zed-editor
   ];
 
   programs.hyprland = {
