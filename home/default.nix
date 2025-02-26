@@ -82,7 +82,7 @@
       programs.helix = {
         enable = true;
         defaultEditor = true;
-        extraPackages = with pkgs; [ marksman nil ];
+        extraPackages = with pkgs; [ marksman nixd nixfmt-classic ];
         languages.language = [{
           name = "nix";
           auto-format = true;
