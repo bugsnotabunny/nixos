@@ -133,6 +133,7 @@
       home.file.".config/wlogout".source = ./wlogout;
       home.file.".config/dunst".source = ./dunst;
       home.file.".config/hypr".source = ./hypr;
+      home.file.".config/battery-notify".source = ./battery-notify;
 
       xdg.desktopEntries = { };
     };
