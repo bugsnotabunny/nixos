@@ -25,6 +25,7 @@
     kitty
     krita
     libreoffice-fresh
+    nb
     nheko
     p7zip
     pamixer
