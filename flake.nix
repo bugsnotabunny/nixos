@@ -12,10 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     grub2-themes = { url = "github:vinceliuice/grub2-themes"; };
-    battery-notifier = {
-      url = "github:luisnquin/battery-notifier";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     zen-browser = {
       url = "github:MarceColl/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,7 +27,6 @@
           inputs.home-manager.nixosModules.home-manager
           inputs.disko.nixosModules.disko
           inputs.grub2-themes.nixosModules.default
-          inputs.battery-notifier.homeManagerModule.default
           {
             environment.systemPackages =
               [ inputs.zen-browser.packages."${system}".specific ];
