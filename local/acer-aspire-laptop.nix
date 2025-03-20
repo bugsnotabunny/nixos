@@ -3,6 +3,7 @@
     device = "/var/lib/swapfile";
     size = 8 * 1024;
   }];
+  boot.kernel.sysctl = { "vm.swappiness" = 100; };
   batteries.enable = true;
   gpu = {
     manufacturer = "nvidia";
