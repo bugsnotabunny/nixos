@@ -14,7 +14,7 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ gpt4all-cuda ];
+  # environment.systemPackages = with pkgs; [ gpt4all-cuda ];
 
   username = "banan";
   doGaming = true;
