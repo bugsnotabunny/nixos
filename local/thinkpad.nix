@@ -33,6 +33,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    drawio
     chromium
     evolution
     evolution-ews
