@@ -29,7 +29,7 @@
           inputs.grub2-themes.nixosModules.default
           {
             environment.systemPackages =
-              [ inputs.zen-browser.packages."${system}".specific ];
+              [ inputs.zen-browser.packages."${system}".default ];
           }
 
           ./home
