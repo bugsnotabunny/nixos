@@ -1,4 +1,4 @@
-{ rootDevice ? throw "Set this to your disk device, e.g. /dev/sda", devices ? [], ... }: {
+{ rootDevice ? throw "Set this to your disk device, e.g. /dev/sda", storageDevices ? throw "Unset extra devices list. Use [] if not needed", ... }: {
   disko.devices = {
     disk = 
       let extraDisksList = builtins.map 
@@ -21,7 +21,7 @@
             };
           };
         })
-        devices;
+        storageDevices;
     in
     {
       root = {
