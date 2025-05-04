@@ -3,7 +3,7 @@
     disk = 
       let extraDisksList = builtins.map 
         (dev: { 
-          name = baseNameOf dev;
+          name = builtins.baseNameOf dev;
           value = {
             type = "disk";
             device = dev;
@@ -55,6 +55,14 @@
     zpool = {
       zroot = {
         type = "zpool";
+        # mode = {
+        #   topology = {
+        #     type = "topology";
+        #     # vdev = [              {                members = builtins.map builtins.baseNameOf devices;              }
+        #     ];
+        #   };
+        # };
+        
         rootFsOptions = {
           mountpoint = "none";
           compression = "zstd";
@@ -64,6 +72,12 @@
         };
         options.ashift = "12";
         datasets = {
+          "root/nix" = {
+            type = "zfs_fs";
+            options.mountpoint = "/nix";
+            mountpoint = "/nix";
+          };
+
           "root" = {
             type = "zfs_fs";
             options = {
@@ -73,11 +87,6 @@
             };
             mountpoint = "/";
 
-          };
-          "root/nix" = {
-            type = "zfs_fs";
-            options.mountpoint = "/nix";
-            mountpoint = "/nix";
           };
         };
       };
