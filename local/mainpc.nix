@@ -1,6 +1,6 @@
 { pkgs, ... }: {
-  rootDevice = "/dev/sdb";
-  storageDevices = ["/dev/sda" "/dev/nvme0n1"];
+  rootDevice = "/dev/nvme0n1";
+  storageDevices = ["/dev/sda"];
   swapDevices = [{
     device = "/var/lib/swapfile";
     size = 8 * 1024;

@@ -55,13 +55,6 @@
     zpool = {
       zroot = {
         type = "zpool";
-        # mode = {
-        #   topology = {
-        #     type = "topology";
-        #     # vdev = [              {                members = builtins.map builtins.baseNameOf devices;              }
-        #     ];
-        #   };
-        # };
         
         rootFsOptions = {
           mountpoint = "none";
@@ -80,13 +73,7 @@
 
           "root" = {
             type = "zfs_fs";
-            options = {
-              encryption = "aes-256-gcm";
-              keyformat = "passphrase";
-              keylocation = "file:///tmp/secret.key";
-            };
             mountpoint = "/";
-
           };
         };
       };
