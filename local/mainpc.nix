@@ -1,9 +1,11 @@
 { pkgs, ... }: {
-  rootDevice = "/dev/sda";
+  rootDevice = "/dev/nvme0n1";
+  storageDevices = [ "/dev/sda" ];
   swapDevices = [{
     device = "/var/lib/swapfile";
     size = 8 * 1024;
   }];
+  networking.hostId = "8425e349";
   boot.kernel.sysctl = { "vm.swappiness" = 10; };
   gpu = {
     manufacturer = "nvidia";
