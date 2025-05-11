@@ -15,6 +15,7 @@
   };
 
   rootDevice = "/dev/nvme0n1";
+  storageDivices = [ ];
   username = "banan";
   doGaming = true;
   time.timeZone = "Europe/Moscow";
