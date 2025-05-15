@@ -15,6 +15,7 @@
     ./pkgs.nix
     ./shell.nix
     ./batteries.nix
+    ./printing.nix
   ];
 
   nix.settings = {
@@ -66,13 +67,6 @@
       support32Bit = true;
     };
     jack.enable = true;
-  };
-
-  services.printing.enable = true;
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
   };
 
   services.gvfs.enable = true;
