@@ -3,14 +3,17 @@
     device = "/var/lib/swapfile";
     size = 8 * 1024;
   }];
-  gpu.manufacturer = "intel";
 
+  rootDevice = "/dev/nvme0n1";
+  storageDevices = [ ];
+
+  gpu.manufacturer = "intel";
   doGaming = false;
-  time.timeZone = "Europe/Moscow";
-  username = "dmalakhov";
+  batteries.enable = true;
+  username = "d.malakhov";
   usernameFull = "Dmitry Malakhov";
 
-  batteries.enable = true;
+  time.timeZone = "Europe/Moscow";
 
   security.pki.certificateFiles = [ ./tel.yadro.com.crt ];
 

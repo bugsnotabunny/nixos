@@ -1,12 +1,18 @@
 { pkgs, ... }: {
   rootDevice = "/dev/nvme0n1";
   storageDevices = [ "/dev/sda" ];
+
+  networking.hostId = "8425e349";
+
+  boot.kernel.sysctl = { "vm.swappiness" = 10; };
   swapDevices = [{
     device = "/var/lib/swapfile";
     size = 8 * 1024;
   }];
-  networking.hostId = "8425e349";
-  boot.kernel.sysctl = { "vm.swappiness" = 10; };
+
+  username = "banan";
+  usernameFull = "Dmitry Malakhov";
+  doGaming = true;
   gpu = {
     manufacturer = "nvidia";
     nvidiaPrime = {
@@ -18,7 +24,5 @@
 
   # environment.systemPackages = with pkgs; [ gpt4all-cuda ];
 
-  username = "banan";
-  doGaming = true;
   time.timeZone = "Europe/Moscow";
 }
