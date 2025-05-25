@@ -14,6 +14,7 @@
   usernameFull = "Dmitry Malakhov";
 
   time.timeZone = "Europe/Moscow";
+  networking.hostId = "13f0ff73";
 
   security.pki.certificateFiles = [ ./tel.yadro.com.crt ];
 
