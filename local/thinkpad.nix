@@ -39,10 +39,13 @@
   environment.systemPackages = with pkgs; [
     drawio
     chromium
-    evolution
-    evolution-ews
     ktalk
     mattermost-desktop
     vscode
   ];
+
+  # programs.evolution = {
+  #   enable = true;
+  #   plugins = [ pkgs.evolution-ews pkgs.evolution-data-server-gtk4 ];
+  # };
 }
