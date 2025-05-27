@@ -38,7 +38,6 @@
 
   environment.systemPackages = with pkgs; [
     drawio
-    chromium
     ktalk
     mattermost-desktop
     vscode

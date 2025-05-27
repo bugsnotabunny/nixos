@@ -4,7 +4,6 @@
   nixpkgs.config.permittedInsecurePackages = [ "olm-3.2.16" ];
 
   environment.systemPackages = with pkgs; [
-    system-config-printer
     asciiquarium
     brightnessctl
     btop
@@ -15,7 +14,6 @@
     evince
     fastfetch
     ffmpeg-full
-    firefox
     gimp
     git
     gitui
@@ -33,11 +31,11 @@
     pavucontrol
     playerctl
     qbittorrent
-    qutebrowser
     ranger
     smile
     swaybg
     swaylock
+    system-config-printer
     telegram-desktop
     tree
     unzip
