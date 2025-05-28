@@ -22,7 +22,11 @@
     };
   };
 
-  # environment.systemPackages = with pkgs; [ gpt4all-cuda ];
+  environment.systemPackages = with pkgs;
+    [
+      # gpt4all-cuda
+      firefox
+    ];
 
   time.timeZone = "Europe/Moscow";
 }
