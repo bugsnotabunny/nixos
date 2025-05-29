@@ -43,8 +43,8 @@
     vscode
   ];
 
-  # programs.evolution = {
-  #   enable = true;
-  #   plugins = [ pkgs.evolution-ews pkgs.evolution-data-server-gtk4 ];
-  # };
+  programs.evolution = {
+    enable = true;
+    plugins = [ pkgs.evolution-ews ];
+  };
 }
