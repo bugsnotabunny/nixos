@@ -11,7 +11,7 @@
   }];
 
   username = "banan";
-  usernameFull = "Dmitry Malakhov";
+
   doGaming = true;
   gpu = {
     manufacturer = "nvidia";

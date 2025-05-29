@@ -94,7 +94,7 @@
       programs.git = {
         enable = true;
         lfs.enable = true;
-        userName = config.usernameFull;
+        userName = "Dmitry Malakhov";
         userEmail = "d.malakhov@yadro.com";
         signing.format = "ssh";
         extraConfig = {
