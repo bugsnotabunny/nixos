@@ -13,7 +13,7 @@
     };
     grub2-themes = { url = "github:vinceliuice/grub2-themes"; };
     zen-browser = {
-      url = "github:MarceColl/zen-browser-flake";
+      url = "github:Axot017/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -27,7 +27,7 @@
         inputs.grub2-themes.nixosModules.default
         {
           environment.systemPackages =
-            [ inputs.zen-browser.packages."${system}".specific ];
+            [ inputs.zen-browser.packages."${system}".default ];
         }
 
         ./home
