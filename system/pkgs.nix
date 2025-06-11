@@ -4,6 +4,7 @@
   nixpkgs.config.permittedInsecurePackages = [ "olm-3.2.16" ];
 
   environment.systemPackages = with pkgs; [
+    onlyoffice-desktopeditors
     asciiquarium
     brightnessctl
     btop
@@ -52,7 +53,7 @@
     xfce.thunar-volman
     yandex-music
     yazi
-    zed-editor
+    zed-editor-fhs
   ];
 
   programs.hyprland = {
