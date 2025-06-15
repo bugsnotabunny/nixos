@@ -46,11 +46,15 @@
     })
 
     (lib.mkIf (config.gpu.manufacturer == "nvidia") {
+      boot.initrd.kernelModules = [ "nvidia" ];
+      boot.blacklistedKernelModules = [ "nouveau" ];
+
       hardware.nvidia = {
         open = false;
+        dynamicBoost.enable = true;
         modesetting.enable = true;
         nvidiaSettings = true;
-        package = config.boot.kernelPackages.nvidiaPackages.stable;
+        package = config.boot.kernelPackages.nvidiaPackages.beta;
         prime = config.gpu.nvidiaPrime;
       };
       environment.systemPackages = with pkgs; [ gpustat ];
