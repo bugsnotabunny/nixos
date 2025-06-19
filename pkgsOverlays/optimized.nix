@@ -9,7 +9,7 @@ arch:
       };
   in {
     optimized = {
-      linux_xanmod_latest = optimized super.linux_xanmod_latest;
+      linux_xanmod_stable = optimized super.linux_xanmod_stable;
       hyprland = optimized super.hyprland;
       custom.comfyui = optimized super.custom.comfyui;
     };
