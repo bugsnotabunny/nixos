@@ -41,8 +41,8 @@
                 (import ./pkgsOverlays/custom.nix lib)
                 (import ./pkgsOverlays/optimized.nix config.cpuArch)
               ];
-              environment.systemPackages =
-                [ inputs.zen-browser.packages."${system}".default ];
+              # environment.systemPackages =
+              # [ inputs.zen-browser.packages."${system}".default ];
             };
           })
 
