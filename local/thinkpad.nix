@@ -38,7 +38,7 @@
 
   environment.systemPackages = with pkgs; [
     drawio
-    ktalk
+    custom.ktalk
     mattermost-desktop
     vscode
   ];
