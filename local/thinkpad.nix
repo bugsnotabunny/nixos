@@ -7,6 +7,7 @@
   rootDevice = "/dev/nvme0n1";
   storageDevices = [ ];
 
+  cpuArch = "alderlake";
   gpu.manufacturer = "intel";
   doGaming = false;
   batteries.enable = true;
