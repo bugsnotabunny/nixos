@@ -42,7 +42,8 @@
   hardware.enableAllFirmware = true;
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackagesFor pkgs.optimized.linux_xanmod_latest;
+
     loader.efi.canTouchEfiVariables = true;
     loader.grub = {
       enable = true;

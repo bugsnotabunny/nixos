@@ -28,24 +28,23 @@
           inputs.disko.nixosModules.disko
           inputs.grub2-themes.nixosModules.default
 
-          {
-            nixpkgs.overlays = [
-              inputs.nix-comfyui.overlays.default
-              ((removeSuffix: final: prev:
-                builtins.listToAttrs (builtins.map (file:
-                  let
-                    fileFull = ./pkgsOverlays + "/${file}";
-                    fileTrimmed = removeSuffix ".nix" file;
-                    package = prev.callPackage fileFull { };
-                  in {
-                    name = fileTrimmed;
-                    value = package;
-                  }) (builtins.attrNames (builtins.readDir ./pkgsOverlays))))
-                inputs.nixpkgs.lib.strings.removeSuffix)
-            ];
-            environment.systemPackages =
-              [ inputs.zen-browser.packages."${system}".default ];
-          }
+          ({ config, lib, ... }: {
+            options.cpuArch = lib.mkOption {
+              type = lib.types.str;
+              default = "default";
+            };
+            config = let
+            in {
+              nixpkgs.overlays = let
+              in [
+                inputs.nix-comfyui.overlays.default
+                (import ./pkgsOverlays/custom.nix lib)
+                (import ./pkgsOverlays/optimized.nix config.cpuArch)
+              ];
+              environment.systemPackages =
+                [ inputs.zen-browser.packages."${system}".default ];
+            };
+          })
 
           ./home
           ./disko

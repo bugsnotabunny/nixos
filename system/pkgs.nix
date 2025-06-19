@@ -51,13 +51,14 @@
     xfce.thunar-volman
     yandex-music
     yazi
-    zed-editor-fhs
+    zed-editor
   ];
 
   programs.hyprland = {
     enable = true;
     withUWSM = true;
     xwayland.enable = true;
+    package = pkgs.optimized.hyprland;
   };
 
   programs.dconf.enable = true;

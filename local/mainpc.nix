@@ -13,6 +13,7 @@
   username = "banan";
 
   doGaming = true;
+  cpuArch = "znver2";
   gpu = {
     manufacturer = "nvidia";
     nvidiaPrime = {
@@ -22,21 +23,10 @@
     };
   };
 
-  environment.systemPackages = let
-    myComfyui = pkgs.comfyuiPackages.comfyui.override {
-      extensions = [
-        pkgs.comfyuiPackages.extensions.acly-inpaint
-        pkgs.comfyuiPackages.extensions.acly-tooling
-        pkgs.comfyuiPackages.extensions.cubiq-ipadapter-plus
-        pkgs.comfyuiPackages.extensions.fannovel16-controlnet-aux
-      ];
-
-      commandLineArgs = [ "--preview-method" "auto" ];
-    };
-  in with pkgs; [
+  environment.systemPackages = with pkgs; [
     # gpt4all-cuda
     firefox
-    myComfyui
+    optimized.custom.comfyui
   ];
 
   time.timeZone = "Europe/Moscow";
