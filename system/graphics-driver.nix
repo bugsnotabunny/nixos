@@ -46,6 +46,7 @@
     })
 
     (lib.mkIf (config.gpu.manufacturer == "nvidia") {
+      nixpkgs.config.cudaSupport = true;
       boot.initrd.kernelModules = [ "nvidia" ];
       boot.blacklistedKernelModules = [ "nouveau" ];
 
@@ -54,7 +55,7 @@
         dynamicBoost.enable = true;
         modesetting.enable = true;
         nvidiaSettings = true;
-        package = config.boot.kernelPackages.nvidiaPackages.beta;
+        package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
         prime = config.gpu.nvidiaPrime;
       };
       environment.systemPackages = with pkgs; [ gpustat ];

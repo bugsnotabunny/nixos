@@ -3,8 +3,10 @@
 
   config = lib.mkIf (config.doGaming) {
     environment.systemPackages = with pkgs; [
-      lutris-unwrapped
+      winetricks
+      lutris
       vulkan-tools
+      vulkan-loader
       mangohud
     ];
 

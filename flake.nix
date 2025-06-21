@@ -11,8 +11,11 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-comfyui.url = "github:ViciousBadger/nix-comfyui";
-    grub2-themes = { url = "github:vinceliuice/grub2-themes"; };
+    nixified-ai = {
+      url = "github:mdietrich16/nixified-ai";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    grub2-themes.url = "github:vinceliuice/grub2-themes";
     flake-utils.url = "github:numtide/flake-utils";
     zen-browser = {
       url = "github:Axot017/zen-browser-flake";
@@ -37,12 +40,13 @@
             in {
               nixpkgs.overlays = let
               in [
-                inputs.nix-comfyui.overlays.default
+                # inputs.nix-comfyui.overlays.default
+                inputs.nixified-ai.overlays.comfyui
                 (import ./pkgsOverlays/custom.nix lib)
                 (import ./pkgsOverlays/optimized.nix config.cpuArch)
               ];
-              # environment.systemPackages =
-              # [ inputs.zen-browser.packages."${system}".default ];
+              environment.systemPackages =
+                [ inputs.zen-browser.packages."${system}".default ];
             };
           })
 
