@@ -1,9 +1,4 @@
 { pkgs, ... }: {
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 8 * 1024;
-  }];
-
   rootDevice = "/dev/nvme0n1";
   storageDevices = [ ];
 

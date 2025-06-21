@@ -5,10 +5,6 @@
   networking.hostId = "8425e349";
 
   boot.kernel.sysctl = { "vm.swappiness" = 10; };
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 8 * 1024;
-  }];
 
   username = "banan";
 
