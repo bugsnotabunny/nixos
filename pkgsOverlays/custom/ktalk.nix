@@ -15,7 +15,7 @@ let
     extraInstallCommands = let
       desktopEntry = ''
         [Desktop Entry]
-                Exec=ktalk
+                Exec=ktalk --enable-features=WebRTCPipeWireCapturer,UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland
                 GenericName=Conferencing
                 MimeType=x-scheme-handler/ktalk
                 Name=Talk
