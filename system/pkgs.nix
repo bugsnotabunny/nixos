@@ -58,7 +58,7 @@
     enable = true;
     withUWSM = true;
     xwayland.enable = true;
-    package = pkgs.optimized.hyprland;
+    package = pkgs.hyprland;
   };
 
   programs.dconf.enable = true;

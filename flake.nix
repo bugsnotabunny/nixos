@@ -38,9 +38,22 @@
             };
             config = let
             in {
+              programs.ccache.enable = true;
+              programs.ccache.packageNames = [ "linux_xanmod_stable" ];
+              nix.settings.extra-sandbox-paths =
+                [ config.programs.ccache.cacheDir ];
               nixpkgs.overlays = let
               in [
-                # inputs.nix-comfyui.overlays.default
+                (self: super: {
+                  ccacheWrapper = super.ccacheWrapper.override {
+                    extraConfig = ''
+                      export CCACHE_DEBUG=1
+                      export CCACHE_DIR="${config.programs.ccache.cacheDir}"
+                      export CCACHE_SLOPPINESS=random_seed
+                      export KBUILD_BUILD_TIMESTAMP=""
+                    '';
+                  };
+                })
                 inputs.nixified-ai.overlays.comfyui
                 (import ./pkgsOverlays/custom.nix lib)
                 (import ./pkgsOverlays/optimized.nix config.cpuArch)
@@ -49,7 +62,6 @@
                 [ inputs.zen-browser.packages."${system}".default ];
             };
           })
-
           ./home
           ./disko
           ./system

@@ -1,7 +1,6 @@
 { pkgs, ... }: {
   rootDevice = "/dev/nvme0n1";
   storageDevices = [ "/dev/sda" ];
-
   networking.hostId = "8425e349";
 
   boot.kernel.sysctl = { "vm.swappiness" = 10; };
@@ -22,7 +21,7 @@
   environment.systemPackages = with pkgs; [
     # gpt4all-cuda
     firefox
-    optimized.comfyui
+    comfyui
   ];
 
   time.timeZone = "Europe/Moscow";

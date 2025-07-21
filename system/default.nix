@@ -42,7 +42,7 @@
   hardware.enableAllFirmware = true;
 
   boot = {
-    kernelPackages = pkgs.linuxPackagesFor pkgs.optimized.linux_xanmod_stable;
+    kernelPackages = pkgs.linuxPackagesFor pkgs.linux_xanmod_latest;
 
     loader.efi.canTouchEfiVariables = true;
     loader.grub = {
