@@ -8,6 +8,7 @@ arch:
     withOptimized = stdenv: pkg:
       pkg.override { stdenv = optimizedStdenv stdenv; };
     optimized = pkg: withOptimized super.stdenv pkg;
+    optimizedCcached = pkg: withOptimized super.ccacheStdenv pkg;
   in {
     # linux kernel uses cc from depsBuildBuild as well instead of just stdenv
     linux_xanmod_latest = super.linux_xanmod_latest.overrideAttrs (oldAttrs:
@@ -15,5 +16,5 @@ arch:
       in { depsBuildBuild = [ ccacheStdenv.cc ]; });
 
     hyprland = optimized super.hyprland;
-    comfyui = optimized super.custom.comfyui;
+    comfyui = optimizedCcached super.custom.comfyui;
   })
