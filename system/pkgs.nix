@@ -2,12 +2,12 @@
   nixpkgs.config.permittedInsecurePackages = [ "olm-3.2.16" ];
 
   environment.systemPackages = with pkgs; [
-    onlyoffice-desktopeditors
     asciiquarium
     brightnessctl
     btop
     cloc
     curl
+    devenv
     duf
     dunst
     evince
@@ -25,6 +25,7 @@
     libreoffice-fresh
     nb
     nheko
+    onlyoffice-desktopeditors
     p7zip
     pamixer
     pavucontrol
