@@ -5,6 +5,8 @@
   }];
   boot.kernel.sysctl = { "vm.swappiness" = 100; };
   batteries.enable = true;
+  networking.hostId = "99f1f7ff";
+  cpuArch = "x86-64";
   gpu = {
     manufacturer = "nvidia";
     nvidiaPrime = {
@@ -15,7 +17,7 @@
   };
 
   rootDevice = "/dev/nvme0n1";
-  storageDivices = [ ];
+  storageDevices = [ ];
   username = "banan";
   doGaming = true;
   time.timeZone = "Europe/Moscow";
