@@ -8,8 +8,7 @@ arch:
     withOptimized = stdenv: pkg:
       pkg.override { stdenv = optimizedStdenv stdenv; };
     optimized = pkg: withOptimized super.stdenv pkg;
-    optimizedCcached = pkg: withOptimized super.ccacheStdenv pkg;
   in {
     hyprland = optimized super.hyprland;
-    comfyui = optimizedCcached super.custom.comfyui;
+    optimized.comfyui = optimized super.custom.comfyui;
   })

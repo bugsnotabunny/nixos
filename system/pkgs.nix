@@ -52,7 +52,7 @@
     xfce.thunar-volman
     yandex-music
     yazi
-    zed-editor
+    zed-editor-fhs
   ];
 
   programs.hyprland = {

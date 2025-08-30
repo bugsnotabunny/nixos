@@ -21,7 +21,7 @@
   environment.systemPackages = with pkgs; [
     # gpt4all-cuda
     firefox
-    comfyui
+    optimized.comfyui
   ];
 
   time.timeZone = "Europe/Moscow";
