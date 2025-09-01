@@ -38,13 +38,6 @@
             };
             config = let
             in {
-              programs.ccache = {
-                enable = true;
-                packageNames = [ "linux_xanmod_stable" ];
-              };
-
-              nix.settings.extra-sandbox-paths =
-                [ config.programs.ccache.cacheDir ];
               nixpkgs.overlays = let
               in [
                 (self: super: {
