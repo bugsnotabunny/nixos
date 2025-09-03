@@ -35,7 +35,7 @@
     ranger
     smile
     swaybg
-    swaylock
+    swaylock-effects
     system-config-printer
     telegram-desktop
     tree

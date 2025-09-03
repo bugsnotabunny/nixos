@@ -3,6 +3,8 @@ if [[$# != 1]]; then
   exit 1
 fi
 
+# no worky
+
 ROOT_PARTITION = $1
 
 dd if=/dev/random of=/tmp/secret.key bs=32 count=1 &&
