@@ -31,6 +31,7 @@
     pavucontrol
     playerctl
     qbittorrent
+    quickemu
     ranger
     smile
     swaybg
