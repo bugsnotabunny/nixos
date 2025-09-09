@@ -1,14 +1,20 @@
 { lib, config, pkgs, ... }: {
+  imports = [ ./minecraft-server ];
+
   options = with lib; { doGaming = mkEnableOption { }; };
 
   config = lib.mkIf (config.doGaming) {
     environment.systemPackages = with pkgs; [
-      winetricks
+      teamspeak3
+      teamspeak5_client
       lutris
-      vulkan-tools
-      vulkan-loader
       mangohud
+      vulkan-loader
+      vulkan-tools
+      winetricks
     ];
+
+    services.tailscale.enable = true;
 
     programs.gamemode.enable = true;
 

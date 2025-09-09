@@ -6,7 +6,6 @@
     ./cpu-scaling.nix
     ./docker.nix
     ./fonts.nix
-    ./gaming.nix
     ./graphics-driver.nix
     ./greeter.nix
     ./hardware-configuration.nix

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
   rootDevice = "/dev/nvme0n1";
   storageDevices = [ "/dev/sda" ];
   networking.hostId = "8425e349";
@@ -8,6 +8,7 @@
   username = "banan";
 
   doGaming = true;
+  minecraftServer = true;
   cpuArch = "znver2";
   gpu = {
     manufacturer = "nvidia";

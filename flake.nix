@@ -18,9 +18,13 @@
     grub2-themes.url = "github:vinceliuice/grub2-themes";
     flake-utils.url = "github:numtide/flake-utils";
     zen-browser = {
+
       url = "github:Axot017/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-alien.url = "github:thiagokokada/nix-alien";
+    nix-minecraft.url = "github:juliamertz/nix-minecraft";
   };
 
   outputs = { ... }@inputs:
@@ -30,6 +34,7 @@
           inputs.home-manager.nixosModules.home-manager
           inputs.disko.nixosModules.disko
           inputs.grub2-themes.nixosModules.default
+          inputs.nix-minecraft.nixosModules.minecraft-servers
 
           ({ config, lib, ... }: {
             options.cpuArch = lib.mkOption {
@@ -50,6 +55,7 @@
                     '';
                   };
                 })
+                inputs.nix-minecraft.overlay
                 inputs.nixified-ai.overlays.comfyui
                 (import ./pkgsOverlays/custom.nix lib)
                 (import ./pkgsOverlays/optimized.nix config.cpuArch)
@@ -58,18 +64,22 @@
                 [ inputs.zen-browser.packages."${system}".default ];
             };
           })
+          ./gaming
           ./home
           ./disko
           ./system
         ];
       in {
         nixosConfigurations.mainpc = inputs.nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
           modules = defaultModules ++ [ ./local/mainpc.nix ];
         };
         nixosConfigurations.thinkpad = inputs.nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
           modules = defaultModules ++ [ ./local/thinkpad.nix ];
         };
         nixosConfigurations.aspire = inputs.nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
           modules = defaultModules ++ [ ./local/acer-aspire-laptop.nix ];
         };
       });

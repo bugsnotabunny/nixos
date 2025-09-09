@@ -1,7 +1,8 @@
-{ pkgs, ... }: {
+{ inputs, pkgs, ... }: {
   nixpkgs.config.permittedInsecurePackages = [ "olm-3.2.16" ];
 
   environment.systemPackages = with pkgs; [
+    appimage-run
     asciiquarium
     brightnessctl
     btop
@@ -54,6 +55,8 @@
     yandex-music
     yazi
     zed-editor-fhs
+    jre8
+    inputs.nix-alien.packages.${system}.nix-alien
   ];
 
   programs.hyprland = {
@@ -63,5 +66,6 @@
     package = pkgs.hyprland;
   };
 
+  programs.nix-ld.enable = true;
   programs.dconf.enable = true;
 }
