@@ -19,11 +19,12 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    # gpt4all-cuda
-    firefox
-    optimized.comfyui
-  ];
+  environment.systemPackages = with pkgs;
+    [
+      # gpt4all-cuda
+      # firefox
+      optimized.comfyui
+    ];
 
   time.timeZone = "Europe/Moscow";
 }

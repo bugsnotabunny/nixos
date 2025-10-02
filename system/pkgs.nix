@@ -52,7 +52,7 @@
     xfce.thunar
     xfce.thunar-archive-plugin
     xfce.thunar-volman
-    yandex-music
+    # yandex-music
     yazi
     zed-editor-fhs
     jre8
