@@ -1,71 +1,88 @@
-{ inputs, pkgs, ... }: {
-  nixpkgs.config.permittedInsecurePackages = [ "olm-3.2.16" ];
-
-  environment.systemPackages = with pkgs; [
-    appimage-run
-    asciiquarium
-    brightnessctl
-    btop
-    cloc
-    curl
-    devenv
-    duf
-    dunst
-    evince
-    fastfetch
-    ffmpeg-full
-    gimp
-    git
-    gitui
-    gparted
-    grim
-    grimblast
-    imagemagick
-    kitty
-    krita
-    libreoffice-fresh
-    nb
-    nheko
-    onlyoffice-desktopeditors
-    p7zip
-    pamixer
-    pavucontrol
-    playerctl
-    qbittorrent
-    quickemu
-    ranger
-    smile
-    swaybg
-    swaylock-effects
-    system-config-printer
-    telegram-desktop
-    tree
-    unzip
-    viewnior
-    vlc
-    wayland-utils
-    wget
-    wl-clipboard
-    wlogout
-    wofi
-    xdg-utils
-    xfce.thunar
-    xfce.thunar-archive-plugin
-    xfce.thunar-volman
-    # yandex-music
-    yazi
-    zed-editor-fhs
-    jre8
-    inputs.nix-alien.packages.${system}.nix-alien
-  ];
-
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
-    xwayland.enable = true;
-    package = pkgs.hyprland;
+{ system, config, lib, inputs, pkgs, ... }: {
+  options.cpuArch = lib.mkOption {
+    type = lib.types.str;
+    default = "default";
   };
 
-  programs.nix-ld.enable = true;
-  programs.dconf.enable = true;
+  config = {
+    nixpkgs.overlays = let
+    in [
+      inputs.nix-minecraft.overlay
+      inputs.nixified-ai.overlays.comfyui
+      (import ../pkgsOverlays/custom.nix lib)
+      (import ../pkgsOverlays/optimized.nix config.cpuArch)
+    ];
+
+    nixpkgs.config.permittedInsecurePackages = [ "olm-3.2.16" ];
+
+    environment.systemPackages = (with pkgs; [
+      appimage-run
+      asciiquarium
+      brightnessctl
+      btop
+      cloc
+      curl
+      devenv
+      duf
+      dunst
+      evince
+      fastfetch
+      ffmpeg-full
+      gimp
+      git
+      gitui
+      gparted
+      grim
+      grimblast
+      imagemagick
+      kitty
+      krita
+      libreoffice-fresh
+      nb
+      nheko
+      onlyoffice-desktopeditors
+      p7zip
+      pamixer
+      pavucontrol
+      playerctl
+      qbittorrent
+      quickemu
+      ranger
+      smile
+      swaybg
+      swaylock-effects
+      system-config-printer
+      telegram-desktop
+      tree
+      unzip
+      viewnior
+      vlc
+      wayland-utils
+      wget
+      wl-clipboard
+      wlogout
+      wofi
+      xdg-utils
+      xfce.thunar
+      xfce.thunar-archive-plugin
+      xfce.thunar-volman
+      # yandex-music
+      yazi
+      zed-editor-fhs
+      jre8
+    ]) ++ (with inputs; [
+      nix-alien.packages.${system}.nix-alien
+      zen-browser.packages."${system}".default
+    ]);
+
+    programs.hyprland = {
+      enable = true;
+      withUWSM = true;
+      xwayland.enable = true;
+      package = pkgs.hyprland;
+    };
+
+    programs.nix-ld.enable = true;
+    programs.dconf.enable = true;
+  };
 }

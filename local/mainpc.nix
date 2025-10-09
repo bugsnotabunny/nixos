@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: {
+{ pkgs, ... }: {
   rootDevice = "/dev/nvme0n1";
   storageDevices = [ "/dev/sda" ];
   networking.hostId = "8425e349";
