@@ -5,8 +5,7 @@
   };
 
   config = {
-    nixpkgs.overlays = let
-    in [
+    nixpkgs.overlays = [
       inputs.nix-minecraft.overlay
       inputs.nixified-ai.overlays.comfyui
       (import ../pkgsOverlays/custom.nix lib)
@@ -72,7 +71,7 @@
       jre8
     ]) ++ (with inputs; [
       nix-alien.packages.${system}.nix-alien
-      zen-browser.packages."${system}".default
+      zen-browser.packages.${system}.default
     ]);
 
     programs.hyprland = {

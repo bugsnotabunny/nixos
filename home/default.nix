@@ -43,14 +43,6 @@
         enable = true;
         mime.enable = true;
 
-        # mime.defaultApplications = {
-        #   "text/html" = "qutebrowser.desktop";
-        #   "x-scheme-handler/http" = "qutebrowser.desktop";
-        #   "x-scheme-handler/https" = "qutebrowser.desktop";
-        #   "x-scheme-handler/about" = "qutebrowser.desktop";
-        #   "x-scheme-handler/unknown" = "qutebrowser.desktop";
-        # };
-
         portal = let
           packages = with pkgs; [
             xdg-desktop-portal-hyprland
@@ -113,7 +105,7 @@
         sessionVariables = {
           EDITOR = "hx";
           TERMINAL = "kitty";
-          BROWSER = "qutebrowser";
+          BROWSER = "zen";
         };
 
         shellAliases = {
@@ -128,14 +120,17 @@
         };
       };
 
-      home.file.".config/kitty".source = ./kitty;
-      home.file.".config/wofi".source = ./wofi;
-      home.file.".config/wlogout".source = ./wlogout;
-      home.file.".config/dunst".source = ./dunst;
-      home.file.".config/hypr".source = ./hypr;
-      home.file.".config/battery-notify".source = ./battery-notify;
-
-      xdg.desktopEntries = { };
+      home.file =
+        let forceAll = lib.mapAttrs (_: value: value // { force = true; });
+        in forceAll {
+          ".config/kitty".source = ./kitty;
+          ".config/wofi".source = ./wofi;
+          ".config/wlogout".source = ./wlogout;
+          ".config/dunst".source = ./dunst;
+          ".config/battery-notify".source = ./battery-notify;
+          ".config/hypr/hyprland.conf".text =
+            import ./hypr/hyprland.conf.nix config.batteries.enable;
+        };
     };
   };
 }

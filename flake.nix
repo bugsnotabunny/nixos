@@ -14,14 +14,16 @@
       url = "github:mdietrich16/nixified-ai";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zen-browser = {
-      url = "github:Axot017/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     grub2-themes.url = "github:vinceliuice/grub2-themes";
     flake-utils.url = "github:numtide/flake-utils";
     nix-alien.url = "github:thiagokokada/nix-alien";
+
+    # TODO: switch to package from nixpkgs when it's available
+    zen-browser = {
+      url = "github:Axot017/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # TODO: switch to Infinidoge/nix-minecraft
     # when https://github.com/Infinidoge/nix-minecraft/pull/161
