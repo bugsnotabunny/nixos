@@ -14,8 +14,11 @@
       url = "github:mdietrich16/nixified-ai";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    grub2-themes = {
+      url = "github:vinceliuice/grub2-themes";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    grub2-themes.url = "github:vinceliuice/grub2-themes";
     flake-utils.url = "github:numtide/flake-utils";
     nix-alien.url = "github:thiagokokada/nix-alien";
 
