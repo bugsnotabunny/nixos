@@ -10,6 +10,7 @@
       inputs.nixified-ai.overlays.comfyui
       (import ../pkgsOverlays/custom.nix lib)
       (import ../pkgsOverlays/optimized.nix config.cpuArch)
+      (import ../pkgsOverlays/unstable.nix inputs.nixpkgs-unstable)
     ];
 
     nixpkgs.config.permittedInsecurePackages = [ "olm-3.2.16" ];
@@ -71,6 +72,8 @@
       jre8
     ]) ++ (with inputs; [
       nix-alien.packages.${system}.nix-alien
+
+      # TODO: switch to package from nixpkgs when it's available
       zen-browser.packages.${system}.default
     ]);
 
