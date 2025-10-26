@@ -13,7 +13,8 @@
       (import ../pkgsOverlays/unstable.nix inputs.nixpkgs-unstable)
     ];
 
-    nixpkgs.config.permittedInsecurePackages = [ "olm-3.2.16" ];
+    nixpkgs.config.permittedInsecurePackages =
+      [ "olm-3.2.16" "mbedtls-2.28.10" ];
 
     environment.systemPackages = (with pkgs; [
       appimage-run
