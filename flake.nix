@@ -19,9 +19,12 @@
       url = "github:vinceliuice/grub2-themes";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-alien = {
+      url = "github:thiagokokada/nix-alien";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     flake-utils.url = "github:numtide/flake-utils";
-    nix-alien.url = "github:thiagokokada/nix-alien";
 
     # TODO: switch to package from nixpkgs when it's available
     zen-browser = {
