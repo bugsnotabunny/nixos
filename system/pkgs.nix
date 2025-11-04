@@ -69,7 +69,7 @@
       xfce.thunar-volman
       # yandex-music
       yazi
-      zed-editor-fhs
+      zed-editor
       jre8
     ]) ++ (with inputs; [
       nix-alien.packages.${system}.nix-alien
