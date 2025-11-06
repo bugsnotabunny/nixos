@@ -12,7 +12,7 @@
   time.timeZone = "Europe/Moscow";
   networking.hostId = "13f0ff73";
 
-  security.pki.certificateFiles = [ ./tel.yadro.com.crt ];
+  security.pki.certificateFiles = [ ./root.tel.yadro.com.crt ];
 
   virtualisation.docker.daemon.settings = {
     insecure-registries =

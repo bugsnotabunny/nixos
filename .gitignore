@@ -1,4 +1,3 @@
 **/result
 *.crt
 system/hardware-configuration.nix
-local/default.nix
