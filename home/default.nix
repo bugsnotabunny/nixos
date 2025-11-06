@@ -130,6 +130,7 @@
           ".config/battery-notify".source = ./battery-notify;
           ".config/hypr/hyprland.conf".text =
             import ./hypr/hyprland.conf.nix config.batteries.enable;
+          ".config/zed".source = ./zed;
         };
     };
   };
