@@ -23,14 +23,12 @@
       url = "github:thiagokokada/nix-alien";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    flake-utils.url = "github:numtide/flake-utils";
-
-    # TODO: switch to package from nixpkgs when it's available
     zen-browser = {
-      url = "github:Axot017/zen-browser-flake";
+      url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    flake-utils.url = "github:numtide/flake-utils";
 
     # TODO: switch to Infinidoge/nix-minecraft
     # when https://github.com/Infinidoge/nix-minecraft/pull/161

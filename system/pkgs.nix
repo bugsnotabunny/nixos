@@ -36,6 +36,7 @@
       grim
       grimblast
       imagemagick
+      jre8
       kitty
       krita
       libreoffice-fresh
@@ -70,13 +71,7 @@
       # yandex-music
       yazi
       zed-editor
-      jre8
-    ]) ++ (with inputs; [
-      nix-alien.packages.${system}.nix-alien
-
-      # TODO: switch to package from nixpkgs when it's available
-      zen-browser.packages.${system}.default
-    ]);
+    ]) ++ (with inputs; [ nix-alien.packages.${system}.nix-alien ]);
 
     programs.hyprland = {
       enable = true;
@@ -87,5 +82,6 @@
 
     programs.nix-ld.enable = true;
     programs.dconf.enable = true;
+
   };
 }

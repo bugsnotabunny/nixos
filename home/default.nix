@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ inputs, config, lib, ... }: {
   options = with lib; {
     username = mkOption { type = types.str; };
     usernameFull = mkOption {
@@ -8,6 +8,7 @@
   };
 
   config = {
+
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.${config.username} = {
       isNormalUser = true;
@@ -18,6 +19,8 @@
 
     home-manager.backupFileExtension = "backup";
     home-manager.users.${config.username} = { pkgs, ... }: {
+      imports = [ inputs.zen-browser.homeModules.twilight ];
+
       home = {
         enableNixpkgsReleaseCheck = true;
         stateVersion = "25.05";
@@ -117,6 +120,28 @@
           enable = true;
           plugins = [ "git" ];
           theme = "candy";
+        };
+      };
+
+      programs.zen-browser = {
+        enable = true;
+        policies = {
+          AutofillAddressEnabled = true;
+          AutofillCreditCardEnabled = false;
+          DisableAppUpdate = true;
+          DisableFeedbackCommands = true;
+          DisableFirefoxStudies = true;
+          DisablePocket = true;
+          DisableTelemetry = true;
+          DontCheckDefaultBrowser = true;
+          NoDefaultBookmarks = true;
+          OfferToSaveLogins = true;
+          EnableTrackingProtection = {
+            Value = true;
+            Locked = true;
+            Cryptomining = true;
+            Fingerprinting = true;
+          };
         };
       };
 

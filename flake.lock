@@ -192,6 +192,27 @@
         "type": "github"
       }
     },
+    "home-manager_2": {
+      "inputs": {
+        "nixpkgs": [
+          "zen-browser",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1762351818,
+        "narHash": "sha256-0ptUDbYwxv1kk/uzEX4+NJjY2e16MaAhtzAOJ6K0TG0=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "b959c67241cae17fc9e4ee7eaf13dfa8512477ea",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "nix-alien": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -296,11 +317,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1762303226,
-        "narHash": "sha256-+iWGu8Q+I/YBnGF3U/vI5HCGhIznjA6dNnNjuNmlp0g=",
+        "lastModified": 1762799456,
+        "narHash": "sha256-q8yYVflUYshKcCFK9vNIPt/4cILutpoocOrKQxpOp8E=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0e1b63b966be0867a5abbd3b2c2a9c7fc20ed6f2",
+        "rev": "6213355d879fa0627d228b8bc60d0c0f4de379ae",
         "type": "github"
       },
       "original": {
@@ -312,11 +333,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1761999846,
-        "narHash": "sha256-IYlYnp4O4dzEpL77BD/lj5NnJy2J8qbHkNSFiPBCbqo=",
+        "lastModified": 1762756533,
+        "narHash": "sha256-HiRDeUOD1VLklHeOmaKDzf+8Hb7vSWPVFcWwaTrpm+U=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "3de8f8d73e35724bf9abef41f1bdbedda1e14a31",
+        "rev": "c2448301fb856e351aab33e64c33a3fc8bcf637d",
         "type": "github"
       },
       "original": {
@@ -393,20 +414,21 @@
     },
     "zen-browser": {
       "inputs": {
+        "home-manager": "home-manager_2",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1762276434,
-        "narHash": "sha256-n9roQT0FdBPx9OZgI5RJpuNES3R/00euOQICfdqJl0A=",
-        "owner": "Axot017",
+        "lastModified": 1762748864,
+        "narHash": "sha256-YgQ80R6TW9GxS0Ozaqe9mTVewuOWqwRmMUhRUpKsoCs=",
+        "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "dfe13903d0d8a580b72ac1dc5da7eb98b88cc6ce",
+        "rev": "02bb5919dab81a3fea4d8d4663ea67922a463cd3",
         "type": "github"
       },
       "original": {
-        "owner": "Axot017",
+        "owner": "0xc000022070",
         "repo": "zen-browser-flake",
         "type": "github"
       }
