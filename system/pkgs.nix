@@ -68,10 +68,10 @@
       xfce.thunar
       xfce.thunar-archive-plugin
       xfce.thunar-volman
-      # yandex-music
       yazi
       zed-editor
-    ]) ++ (with inputs; [ nix-alien.packages.${system}.nix-alien ]);
+    ]) ++ (with pkgs.unstable; [ yandex-music ])
+      ++ (with inputs; [ nix-alien.packages.${system}.nix-alien ]);
 
     programs.hyprland = {
       enable = true;
