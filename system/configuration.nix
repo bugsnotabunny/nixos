@@ -51,18 +51,23 @@
   boot = {
     kernelPackages = pkgs.linuxPackagesFor pkgs.linux_xanmod;
 
-    loader.efi.canTouchEfiVariables = true;
-    loader.grub = {
-      enable = true;
-      devices = [ "nodev" ];
-      efiSupport = true;
-      useOSProber = true;
-      memtest86.enable = true;
-    };
-    loader.grub2-theme = {
-      enable = true;
-      theme = "tela";
-      footer = true;
+    loader = {
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot/EFI";
+      };
+      grub = {
+        enable = true;
+        devices = [ "nodev" ];
+        efiSupport = true;
+        useOSProber = true;
+        memtest86.enable = true;
+      };
+      grub2-theme = {
+        enable = true;
+        theme = "tela";
+        footer = true;
+      };
     };
   };
 

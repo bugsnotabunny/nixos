@@ -35,7 +35,7 @@
               content = {
                 type = "filesystem";
                 format = "vfat";
-                mountpoint = "/boot";
+                mountpoint = "/boot/EFI";
                 mountOptions = [ "nofail" ];
               };
             };

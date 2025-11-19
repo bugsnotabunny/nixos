@@ -38,7 +38,6 @@
       imagemagick
       jre8
       kitty
-      krita
       libreoffice-fresh
       nb
       nheko
