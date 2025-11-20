@@ -33,6 +33,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    clamav
     drawio
     custom.ktalk
     mattermost-desktop
