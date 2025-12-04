@@ -44,9 +44,6 @@
       nheko
       onlyoffice-desktopeditors
       p7zip
-      pamixer
-      pavucontrol
-      playerctl
       qbittorrent
       quickemu
       ranger
@@ -82,6 +79,5 @@
 
     programs.nix-ld.enable = true;
     programs.dconf.enable = true;
-
   };
 }
