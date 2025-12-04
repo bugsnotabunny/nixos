@@ -13,12 +13,13 @@
   "margin-right": 0,
   "fixed-center": true,
   "modules-left": [
-    "hyprland/workspaces",
     "cpu",
     "memory",
     "disk"
   ],
-  "modules-center": [],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
   "modules-right": [
     "keyboard-state",
     "hyprland/language",
