@@ -3,6 +3,8 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   imports = [
+    ./audio.nix
+    ./batteries.nix
     ./bluetooth.nix
     ./cpu-scaling.nix
     ./docker.nix
@@ -13,9 +15,8 @@
     ./locale.nix
     ./networking.nix
     ./pkgs.nix
-    ./shell.nix
-    ./batteries.nix
     ./printing.nix
+    ./shell.nix
   ];
 
   nix.extraOptions = ''
