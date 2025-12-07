@@ -11,7 +11,7 @@
   ],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
-    "group/tray-expander",
+    "tray",
     "bluetooth",
     "network",
     "pulseaudio",
@@ -36,11 +36,6 @@
       "active": "󱓻"
     },
     "persistent-workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
-      "5": []
     }
   },
   "clock": {
@@ -107,18 +102,6 @@
     "on-click": "amixer set Master toggle",
     "on-click-right": "pavucontrol",
     "smooth-scrolling-threshold": 1
-  },
-  "group/tray-expander": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 600,
-      "children-class": "tray-group-item"
-    },
-    "modules": ["custom/expand-icon", "tray"]
-  },
-  "custom/expand-icon": {
-    "format": "",
-    "tooltip": false
   },
   "tray": {
     "icon-size": 15,
