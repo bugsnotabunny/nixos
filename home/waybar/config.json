@@ -88,14 +88,25 @@
     "on-click": "blueman-manager"
   },
   "pulseaudio": {
-    "format": "{icon}",
-    "on-click": "pamixer -t",
-    "tooltip-format": "Playing at {volume}%",
-    "scroll-step": 5,
-    "format-muted": "",
+    "format": "{icon} {volume}%",
+    "format-muted": " Mute",
     "format-icons": {
-      "default": ["", "", ""]
-    }
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "scroll-step": 5.0,
+    "on-click": "amixer set Master toggle",
+    "on-click-right": "pavucontrol",
+    "smooth-scrolling-threshold": 1
   },
   "group/tray-expander": {
     "orientation": "inherit",
