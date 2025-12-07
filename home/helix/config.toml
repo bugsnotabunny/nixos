@@ -1,4 +1,4 @@
-theme = "monokai"
+theme = "catpuccin"
 
 [editor]
 auto-format = true
