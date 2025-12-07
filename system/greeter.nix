@@ -12,7 +12,7 @@
         theme_name = lib.mkDefault "Tokionight Dark";
 
         # Font name and size
-        font_name = "Cantarell 16";
+        font_name = lib.mkForce "JetBrainsMono Nerd Font 14";
       };
     };
     cageArgs = [ "-s" "-m" "last" ];

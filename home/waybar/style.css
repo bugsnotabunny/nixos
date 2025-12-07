@@ -1,126 +1,68 @@
-/** ********** Fonts ********** **/
+@define-color foreground #cdd6f4;
+@define-color background rgba(21, 4, 33, 0.9);
+
 * {
-  font-family: "JetBrains Mono", "Iosevka Nerd Font";
-  font-size: 12px;
+  background-color: @background;
+  color: @foreground;
+
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: 'JetBrainsMono Nerd Font';
+  font-size: 14px;
 }
 
-/** ********** Waybar Window ********** **/
-window#waybar {
-  background-color: rgba(0, 0, 0, 0);
-  color: #000000;
-  transition-property: background-color;
-  transition-duration: .5s;
+.modules-left {
+  margin-left: 8px;
 }
 
-window#waybar.hidden {
+.modules-right {
+  margin-right: 8px;
+}
+
+#workspaces button {
+  all: initial;
+  padding: 0 6px;
+  margin: 0 1.5px;
+  min-width: 9px;
+}
+
+#workspaces button.empty {
   opacity: 0.5;
 }
 
-/** ********** Backlight ********** **/
-#backlight {
-  background-color: #cba6f7;
-}
-
-/** ********** Battery ********** **/
-#battery {
-  background-color: #f9e2af;
-}
-
-@keyframes blink {
-  to {
-    color: #000000;
-  }
-}
-
-#battery.critical:not(.charging) {
-  background-color: #f38ba8;
-  color: #f38ba8;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-/** ********** Clock ********** **/
-#clock {
-  background-color: #a6e3a1;
-}
-
-/** ********** CPU ********** **/
-#cpu {
-  background-color: #89dceb;
-}
-
-/** ********** Memory ********** **/
-#memory {
-  background-color: #eba0ac;
-}
-
-/** ********** Disk ********** **/
-#disk {
-  background-color: #b4befe;
-}
-
-/** ********** Tray ********** **/
-#tray {
-  background-color: #cdd6f4;
-}
-
-#tray>.passive {
-  -gtk-icon-effect: dim;
-}
-
-#tray>.needs-attention {
-  -gtk-icon-effect: highlight;
-}
-
-/** ********** Pulseaudio ********** **/
-#pulseaudio {
-  background-color: #fab387;
-}
-
-#pulseaudio.bluetooth {
-  background-color: #f5c2e7;
-}
-
-#pulseaudio.muted {
-  background-color: #313244;
-  color: #cdd6f4;
-}
-
-/** ********** Network ********** **/
-#network {
-  background-color: #89b4fa;
-}
-
-#language {
-  background-color: #89b4fa;
-}
-
-#network.disconnected,
-#network.disabled {
-  background-color: #313244;
-  color: #cdd6f4;
-}
-
-#workspaces {
-  background-color: #89b4fa;
-}
-
-/** Common style **/
-#workspaces,
-#language,
-#backlight,
-#battery,
-#clock,
 #cpu,
-#disk,
-#memory,
-#tray,
-#pulseaudio,
+#battery,
+#pulseaudio
+{
+  min-width: 12px;
+  margin: 0 7.5px;
+}
+
+#tray {
+  margin-right: 16px;
+}
+
+#bluetooth {
+  margin-right: 17px;
+}
+
 #network {
-  border-radius: 4px;
-  margin: 6px 0px;
-  padding: 0px 8px;
+  margin-right: 13px;
+}
+
+#custom-expand-icon {
+  margin-right: 18px;
+}
+
+tooltip {
+  padding: 2px;
+}
+
+#clock {
+  margin-left: 8.75px;
+}
+
+.hidden {
+  opacity: 0;
 }
