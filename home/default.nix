@@ -32,8 +32,23 @@
         home = {
           enableNixpkgsReleaseCheck = true;
           stateVersion = "25.05";
-          sessionVariables = { GTK_THEME = defaultGtkTheme; };
+          sessionVariables = {
+            GTK_THEME = defaultGtkTheme;
+            ICON_THEME = "Adwaita";
+            XCURSOR_THEME = "Bibata-Modern-Ice";
+            XCURSOR_SIZE = "28";
+          };
+
+          pointerCursor = {
+            package = pkgs.bibata-cursors;
+            name = "Bibata-Modern-Ice";
+            size = 28;
+
+            x11.enable = true;
+            gtk.enable = true;
+          };
         };
+
         gtk = {
           enable = true;
           font = {
@@ -41,10 +56,11 @@
             size = 14;
           };
           theme = defaultGtkThemeAndPackage;
-          iconTheme = defaultGtkThemeAndPackage;
-          cursorTheme = defaultGtkThemeAndPackage;
+          iconTheme = {
+            name = "Adwaita";
+            package = pkgs.adwaita-icon-theme-legacy;
+          };
         };
-        services.blueman-applet.enable = true;
 
         xdg = {
           enable = true;

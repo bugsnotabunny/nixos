@@ -6,6 +6,7 @@ batteries: ''
     exec-once = dunst
     exec-once = nm-applet
     exec-once = blueman-applet
+    exec-once = hyprctl setcursor $XCURSOR_THEME $XCURSOR_SIZE
   ${if batteries then "exec-once = battery-notify" else ""}
 
     monitor=,prefered,auto, 1
