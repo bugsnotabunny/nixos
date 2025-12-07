@@ -8,16 +8,12 @@
   border: none;
   border-radius: 0;
   min-height: 0;
-  font-family: 'JetBrainsMono Nerd Font';
-  font-size: 14px;
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
 .modules-left {
-  margin-left: 8px;
-}
-
-.modules-right {
-  margin-right: 8px;
+  margin-left: 0px;
 }
 
 #workspaces button {
@@ -32,35 +28,20 @@
 }
 
 #cpu,
-#battery,
-#pulseaudio
-{
-  min-width: 12px;
-  margin: 0 7.5px;
-}
-
-#tray {
-  margin-right: 16px;
-}
-
-#bluetooth {
-  margin-right: 17px;
+#pulseaudio {
+  min-width: 70px;
 }
 
 #network {
-  margin-right: 13px;
+  min-width: 24px;
 }
 
-#custom-expand-icon {
-  margin-right: 18px;
+#clock {
+  margin-right: 0px;
 }
 
 tooltip {
   padding: 2px;
-}
-
-#clock {
-  margin-left: 8.75px;
 }
 
 .hidden {

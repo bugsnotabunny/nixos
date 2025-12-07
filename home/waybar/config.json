@@ -13,6 +13,7 @@
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
     "tray",
+    "hyprland/language",
     "pulseaudio",
     "battery",
     "clock"
@@ -42,11 +43,6 @@
     "format-alt": "{:L%d %B W%V %Y}",
     "tooltip": false
   },
-  "network": {
-    "format": " ⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes} ",
-    "interval": 3,
-    "spacing": 1
-  },
   "battery": {
     "format": "{capacity}% {icon}",
     "format-discharging": "{icon}",
@@ -64,14 +60,6 @@
       "warning": 20,
       "critical": 10
     }
-  },
-  "bluetooth": {
-    "format": "",
-    "format-disabled": "󰂲",
-    "format-connected": "󰂱",
-    "format-no-controller": "",
-    "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "blueman-manager"
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
@@ -94,20 +82,29 @@
     "on-click-right": "pavucontrol",
     "smooth-scrolling-threshold": 1
   },
+  "hyprland/language": {
+    "format-ru": "🇷🇺",
+    "format-en": "🇬🇧"
+  },
   "tray": {
-    "icon-size": 15,
-    "spacing": 17
+    "icon-size": 20,
+    "spacing": 0
   },
    "cpu": {
     "interval": 1,
-    "format": " 󰻠 {usage}% "
+    "format": "󰻠 {usage}%"
   },
   "disk": {
     "interval": 30,
-    "format": " 󰾴 {free} "
+    "format": "󰾴 {free}"
+  },
+  "network": {
+    "format": "⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes}",
+    "interval": 3,
+    "spacing": 1
   },
   "memory": {
     "interval": 1,
-    "format": "  {used:0.1f}GiB "
+    "format": " {used:0.1f}GiB"
   }
 }
