@@ -17,6 +17,7 @@
       [ "olm-3.2.16" "mbedtls-2.28.10" ];
 
     environment.systemPackages = (with pkgs; [
+      xdg-terminal-exec
       appimage-run
       asciiquarium
       brightnessctl

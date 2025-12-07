@@ -44,7 +44,15 @@
 
       xdg = {
         enable = true;
-        mime.enable = true;
+        mimeApps.enable = true;
+
+        mimeApps.defaultApplications = {
+          "application/pdf" = "org.gnome.Evince.desktop";
+          "image/png" = "viewnior.desktop";
+          "x-scheme-handler/http" = "zen-twilight.desktop";
+          "x-scheme-handler/https" = "zen-twilight.desktop";
+          "x-scheme-handler/terminal" = "kitty.desktop";
+        };
 
         portal = let
           packages = with pkgs; [
