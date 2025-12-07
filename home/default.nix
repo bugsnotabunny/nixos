@@ -34,7 +34,7 @@
           stateVersion = "25.05";
           sessionVariables = {
             GTK_THEME = defaultGtkTheme;
-            ICON_THEME = "Adwaita";
+            ICON_THEME = "Tela";
             XCURSOR_THEME = "Bibata-Modern-Ice";
             XCURSOR_SIZE = "28";
           };
@@ -57,8 +57,8 @@
           };
           theme = defaultGtkThemeAndPackage;
           iconTheme = {
-            name = "Adwaita";
-            package = pkgs.adwaita-icon-theme-legacy;
+            name = "Tela";
+            package = pkgs.tela-icon-theme;
           };
         };
 
