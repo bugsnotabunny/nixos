@@ -21,7 +21,7 @@
     home-manager.backupFileExtension = "backup";
     home-manager.users.${config.username} = { pkgs, ... }:
       let
-        defaultGtkPackage = pkgs.tokyo-night-gtk;
+        defaultGtkPackage = pkgs.tokyonight-gtk-theme;
         defaultGtkThemeAndPackage = {
           name = defaultGtkTheme;
           package = defaultGtkPackage;
@@ -31,7 +31,7 @@
 
         home = {
           enableNixpkgsReleaseCheck = true;
-          stateVersion = "25.05";
+          stateVersion = "25.11";
           sessionVariables = {
             GTK_THEME = defaultGtkTheme;
             ICON_THEME = "Tela";
@@ -118,10 +118,10 @@
         programs.git = {
           enable = true;
           lfs.enable = true;
-          userName = "Dmitry Malakhov";
-          userEmail = "d.malakhov@yadro.com";
           signing.format = "ssh";
-          extraConfig = {
+          settings = {
+            user.name = "Dmitry Malakhov";
+            user.email = "d.malakhov@yadro.com";
             push.autoSetupRemote = true;
             pull.rebase = true;
           };

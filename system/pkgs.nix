@@ -14,13 +14,12 @@
     ];
 
     nixpkgs.config.permittedInsecurePackages =
-      [ "olm-3.2.16" "mbedtls-2.28.10" ];
+      [ "olm-3.2.16" "mbedtls-2.28.10" "qtwebengine-5.15.19" ];
 
     environment.systemPackages = (with pkgs; [
-      bibata-cursors
-      xdg-terminal-exec
       appimage-run
       asciiquarium
+      bibata-cursors
       brightnessctl
       btop
       cloc
@@ -31,24 +30,16 @@
       evince
       fastfetch
       ffmpeg-full
-      gimp
       git
       gitui
       gparted
-      grim
-      grimblast
       imagemagick
-      jre8
       kitty
-      krita
       libreoffice-fresh
-      nb
-      nheko
       onlyoffice-desktopeditors
       p7zip
       qbittorrent
       quickemu
-      ranger
       smile
       swaybg
       swaylock-effects
@@ -63,20 +54,20 @@
       wl-clipboard
       wlogout
       wofi
+      xdg-terminal-exec
       xdg-utils
       xfce.thunar
       xfce.thunar-archive-plugin
       xfce.thunar-volman
-      yazi
       zed-editor
-    ]) ++ (with pkgs.unstable; [ yandex-music ])
+    ]) ++ (with pkgs.unstable; [ yandex-music grim grimblast ])
       ++ (with inputs; [ nix-alien.packages.${system}.nix-alien ]);
 
     programs.hyprland = {
       enable = true;
       withUWSM = true;
       xwayland.enable = true;
-      package = pkgs.hyprland;
+      package = pkgs.unstable.hyprland;
     };
 
     programs.nix-ld.enable = true;
