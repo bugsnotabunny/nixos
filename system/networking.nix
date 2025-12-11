@@ -1,27 +1,16 @@
 { pkgs, ... }: {
   networking = {
     hostName = "nixos";
-    networkmanager.enable = true;
-    networkmanager.wifi.powersave = true;
-
-    firewall = {
+    networkmanager = {
       enable = true;
-      allowedTCPPorts = [
-        # SSH
-        22
-      ];
-      allowedUDPPorts = [
-        # DHCP
-        68
-        546
-      ];
+      wifi.powersave = true;
+      plugins = with pkgs; [ networkmanager-openvpn ];
     };
+
+    firewall = { enable = true; };
   };
 
   services.openssh.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    networkmanagerapplet
-    networkmanager-openvpn
-  ];
+  environment.systemPackages = with pkgs; [ networkmanagerapplet ];
 }

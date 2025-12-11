@@ -52,13 +52,11 @@
 
       hardware.nvidia = {
         open = false;
-        dynamicBoost.enable = true;
         modesetting.enable = true;
         nvidiaSettings = true;
-        package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
+        package = config.boot.kernelPackages.nvidiaPackages.stable;
         prime = config.gpu.nvidiaPrime;
       };
-      environment.systemPackages = with pkgs; [ gpustat ];
     })
   ];
 }
