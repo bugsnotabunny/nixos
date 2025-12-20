@@ -21,6 +21,7 @@
 
   environment.systemPackages = with pkgs; [
     # gpt4all-cuda
+    discord
     firefox-bin
     optimized.comfyui
   ];
