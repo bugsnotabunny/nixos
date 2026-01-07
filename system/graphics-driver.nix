@@ -22,41 +22,40 @@
     };
   };
 
-  config = lib.mkMerge [
-    {
-      hardware.graphics = {
-        enable = true;
-        enable32Bit = true;
-      };
+  config = {
+    hardware.graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
 
-      services.xserver.videoDrivers = [ config.gpu.manufacturer ];
-    }
+  } // (lib.mkIf (config.gpu.manufacturer == "intel") {
+    services.xserver.videoDrivers = [ "modesetting" ];
+    hardware.graphics.extraPackages = with pkgs; [
+      vpl-gpu-rt
+      intel-media-driver
+      libvdpau-va-gl
+    ];
 
-    (lib.mkIf (config.gpu.manufacturer == "intel") {
-      hardware.graphics = {
-        extraPackages = with pkgs; [
-          intel-media-driver
-          vaapiIntel
-          vaapiVdpau
-          libvdpau-va-gl
-        ];
-      };
+    environment.sessionVariables = {
+      LIBVA_DRIVER_NAME = "iHD";
+      VDPAU_DRIVER = "va_gl";
+    };
 
-      environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
-    })
+  }) // (lib.mkIf (config.gpu.manufacturer == "nvidia") {
+    services.xserver.videoDrivers = [ "nvidia" ];
+    nixpkgs.config.cudaSupport = true;
 
-    (lib.mkIf (config.gpu.manufacturer == "nvidia") {
-      nixpkgs.config.cudaSupport = true;
-      boot.initrd.kernelModules = [ "nvidia" ];
-      boot.blacklistedKernelModules = [ "nouveau" ];
+    boot = {
+      initrd.kernelModules = [ "nvidia" ];
+      blacklistedKernelModules = [ "nouveau" ];
+    };
 
-      hardware.nvidia = {
-        open = false;
-        modesetting.enable = true;
-        nvidiaSettings = true;
-        package = config.boot.kernelPackages.nvidiaPackages.stable;
-        prime = config.gpu.nvidiaPrime;
-      };
-    })
-  ];
+    hardware.nvidia = {
+      open = false;
+      modesetting.enable = true;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      prime = config.gpu.nvidiaPrime;
+    };
+  });
 }
