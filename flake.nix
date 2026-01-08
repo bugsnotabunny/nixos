@@ -40,26 +40,22 @@
   outputs = { ... }@inputs:
     inputs.flake-utils.lib.eachDefaultSystemPassThrough (system:
       let
-        defaultModules = [
-          inputs.home-manager.nixosModules.home-manager
-          inputs.disko.nixosModules.disko
-          inputs.grub2-themes.nixosModules.default
-          inputs.nix-minecraft.nixosModules.minecraft-servers
-          (inputs.import-tree ./configuration)
-        ];
-        defaultSpecialArgs = { inherit inputs system; };
+        machineConfiguration = machineConfigPath:
+          inputs.nixpkgs.lib.nixosSystem {
+            specialArgs = { inherit inputs system; };
+            modules = [
+              inputs.home-manager.nixosModules.home-manager
+              inputs.disko.nixosModules.disko
+              inputs.grub2-themes.nixosModules.default
+              inputs.nix-minecraft.nixosModules.minecraft-servers
+              (inputs.import-tree ./configuration)
+            ] ++ [ machineConfigPath ];
+          };
       in {
-        nixosConfigurations.mainpc = inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = defaultSpecialArgs;
-          modules = defaultModules ++ [ ./machines/mainpc.nix ];
-        };
-        nixosConfigurations.thinkpad = inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = defaultSpecialArgs;
-          modules = defaultModules ++ [ ./machines/thinkpad.nix ];
-        };
-        nixosConfigurations.aspire = inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = defaultSpecialArgs;
-          modules = defaultModules ++ [ ./machines/acer-aspire-laptop.nix ];
-        };
+        nixosConfigurations.mainpc = machineConfiguration ./machines/mainpc.nix;
+        nixosConfigurations.thinkpad =
+          machineConfiguration ./machines/thinkpad.nix;
+        nixosConfigurations.aspire =
+          machineConfiguration ./machines/acer-aspire-laptop.nix;
       });
 }
