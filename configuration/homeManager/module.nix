@@ -1,6 +1,4 @@
-{ inputs, config, lib, ... }:
-let
-in {
+{ inputs, config, lib, ... }: {
   home-manager.backupFileExtension = "backup";
   home-manager.users.${config.username} = { pkgs, ... }:
     let
@@ -103,7 +101,7 @@ in {
         signing.format = "ssh";
         settings = {
           user.name = "Dmitry Malakhov";
-          user.email = "d.malakhov@yadro.com";
+          user.email = config.userEmail;
           push.autoSetupRemote = true;
           pull.rebase = true;
         };

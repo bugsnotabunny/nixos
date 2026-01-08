@@ -7,7 +7,8 @@
   doGaming = false;
   batteries.enable = true;
   username = "d.malakhov";
-  usernameFull = "Dmitry Malakhov";
+  userDescription = "Dmitry Malakhov";
+  userEmail = "d.malakhov@yadro.com";
 
   time.timeZone = "Europe/Moscow";
   networking.hostId = "13f0ff73";
