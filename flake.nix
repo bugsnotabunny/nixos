@@ -45,24 +45,21 @@
           inputs.grub2-themes.nixosModules.default
           inputs.nix-minecraft.nixosModules.minecraft-servers
 
-          ./gaming
-          ./home
-          ./disko
-          ./system
+          ./configuration
         ];
         defaultSpecialArgs = { inherit inputs system; };
       in {
         nixosConfigurations.mainpc = inputs.nixpkgs.lib.nixosSystem {
           specialArgs = defaultSpecialArgs;
-          modules = defaultModules ++ [ ./local/mainpc.nix ];
+          modules = defaultModules ++ [ ./machines/mainpc.nix ];
         };
         nixosConfigurations.thinkpad = inputs.nixpkgs.lib.nixosSystem {
           specialArgs = defaultSpecialArgs;
-          modules = defaultModules ++ [ ./local/thinkpad.nix ];
+          modules = defaultModules ++ [ ./machines/thinkpad.nix ];
         };
         nixosConfigurations.aspire = inputs.nixpkgs.lib.nixosSystem {
           specialArgs = defaultSpecialArgs;
-          modules = defaultModules ++ [ ./local/acer-aspire-laptop.nix ];
+          modules = defaultModules ++ [ ./machines/acer-aspire-laptop.nix ];
         };
       });
 }

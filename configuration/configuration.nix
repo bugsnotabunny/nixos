@@ -9,14 +9,17 @@
     ./cpu-scaling.nix
     ./docker.nix
     ./fonts.nix
+    ./gaming
     ./graphics-driver.nix
     ./greeter.nix
     ./hardware-configuration.nix
+    ./home
     ./locale.nix
     ./networking.nix
     ./pkgs.nix
     ./printing.nix
     ./shell.nix
+    ./disko
   ];
 
   nix.extraOptions = ''

@@ -23,7 +23,7 @@
       # gpt4all-cuda
       firefox-bin
       # discord
-      comfyui
+      # comfyui
     ];
 
   time.timeZone = "Europe/Moscow";
