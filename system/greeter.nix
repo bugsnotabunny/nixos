@@ -1,20 +1,32 @@
-{ lib, ... }: {
-  services.greetd.enable = true;
-  programs.regreet = {
+{ pkgs, config, ... }: {
+  services.greetd = {
     enable = true;
     settings = {
-      background.fit = "Contain";
-
-      GTK = {
-        application_prefer_dark_theme = true;
-        cursor_theme_name = lib.mkDefault "Tokionight Dark";
-        icon_theme_name = lib.mkDefault "Tokionight Dark";
-        theme_name = lib.mkDefault "Tokionight Dark";
-
-        # Font name and size
-        font_name = lib.mkForce "JetBrainsMono Nerd Font 14";
+      default_session = {
+        command = ''
+          ${pkgs.tuigreet}/bin/tuigreet \
+                      --asterisks \
+                      --time \
+                      --user-menu \
+                      --remember \
+                      --remember-session \
+                      --sessions ${config.programs.hyprland.package}/share/wayland-sessions'';
+        user = "greeter";
       };
     };
-    cageArgs = [ "-s" "-m" "last" ];
+  };
+
+  # this is a life saver.
+  # literally no documentation about this anywhere.
+  # might be good to write about this...
+  # https://www.reddit.com/r/NixOS/comments/u0cdpi/tuigreet_with_xmonad_how/
+  systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+    StandardInput = "tty";
+    StandardOutput = "tty";
+    StandardError = "journal"; # Without this errors will spam on screen
+    TTYReset = true; # Without these bootlogs will spam on screen
+    TTYVHangup = true;
+    TTYVTDisallocate = true;
   };
 }
