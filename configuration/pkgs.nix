@@ -60,6 +60,8 @@
       xfce.thunar-archive-plugin
       xfce.thunar-volman
       zed-editor
+      nixd
+      marksman
     ]) ++ (with pkgs.unstable; [ yandex-music grim grimblast ])
       ++ (with inputs; [ nix-alien.packages.${system}.nix-alien ]);
 
