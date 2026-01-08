@@ -22,7 +22,6 @@ batteries: ''
       gaps_in = 3
       gaps_out = 5
       border_size = 0
-      no_border_on_floating = true
       layout = dwindle
     }
 
@@ -40,9 +39,6 @@ batteries: ''
       active_opacity = 1.0
       inactive_opacity = 1.0
 
-      blurls = gtk-layer-shell
-      # blurls = waybar
-      blurls = lockscreen
     }
 
     animations {
@@ -63,35 +59,31 @@ batteries: ''
     }
 
     dwindle {
-      pseudotile = true # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-      preserve_split = true # you probably want this
+      pseudotile = true
+      preserve_split = true
     }
 
-    windowrule = float, title:file_progress
-    windowrule = float, title:confirm
-    windowrule = float, title:dialog
-    windowrule = float, title:download
-    windowrule = float, title:notification
-    windowrule = float, title:error
-    windowrule = float, title:splash
-    windowrule = float, title:confirmreset
-    windowrule = float, title:Open File
-    windowrule = float, title:branchdialog
-    windowrule = float, title:Lxappearance
-    windowrule = float, title:wofi
-    windowrule = float, title:smile
-    windowrule = float, title:feh
-    windowrule = float, title:file-roller
-    windowrule = fullscreen, title:wlogout
-    windowrule = float, title:wlogout
-    windowrule = fullscreen, title:wlogout
-    windowrule = idleinhibit focus, title:mpv
-    windowrule = float, title:^(Media viewer)$
-    windowrule = float, title:^(Volume Control)$
-    windowrule = float, title:^(Picture-in-Picture)$
-    windowrule = size 800 600, title:^(Volume Control)$
-    windowrule = move 75 44%, title:^(Volume Control)$
-    windowrule = tile, title:kitty
+    windowrule = float true, match:title file_progress
+    windowrule = float true, match:title confirm
+    windowrule = float true, match:title dialog
+    windowrule = float true, match:title download
+    windowrule = float true, match:title notification
+    windowrule = float true, match:title error
+    windowrule = float true, match:title splash
+    windowrule = float true, match:title confirmreset
+    windowrule = float true, match:title Open File
+    windowrule = float true, match:title branchdialog
+    windowrule = float true, match:title wofi
+    windowrule = float true, match:title smile
+    windowrule = float true, match:title feh
+    windowrule = float true, match:title file-roller
+    windowrule = fullscreen true, match:title wlogout
+    windowrule = float true, match:title wlogout
+    windowrule = float true, match:title ^(Media viewer)$
+    windowrule = float true, match:title ^(Volume Control)$
+    windowrule = float true, match:title ^(Picture-in-Picture)$
+    windowrule = size 800 600, match:title ^(Volume Control)$
+    windowrule = move 75 44%, match:title ^(Volume Control)$
 
     binde=, XF86AudioRaiseVolume, exec, pamixer -i 5
     binde=, XF86AudioLowerVolume, exec, pamixer -d 5
