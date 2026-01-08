@@ -2,26 +2,6 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  imports = [
-    ./audio.nix
-    ./batteries.nix
-    ./bluetooth.nix
-    ./cpu-scaling.nix
-    ./docker.nix
-    ./fonts.nix
-    ./gaming
-    ./graphics-driver.nix
-    ./greeter.nix
-    ./hardware-configuration.nix
-    ./home
-    ./locale.nix
-    ./networking.nix
-    ./pkgs.nix
-    ./printing.nix
-    ./shell.nix
-    ./disko
-  ];
-
   nix.extraOptions = ''
     extra-substituters = 
     extra-trusted-public-keys = 

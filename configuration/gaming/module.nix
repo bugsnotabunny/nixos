@@ -1,6 +1,4 @@
 { lib, config, pkgs, ... }: {
-  imports = [ ./minecraft-server ];
-
   options = with lib; { doGaming = mkEnableOption { }; };
 
   config = lib.mkIf (config.doGaming) {

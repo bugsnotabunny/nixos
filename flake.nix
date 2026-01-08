@@ -29,6 +29,7 @@
     };
 
     flake-utils.url = "github:numtide/flake-utils";
+    import-tree.url = "github:vic/import-tree";
 
     # TODO: switch to Infinidoge/nix-minecraft
     # when https://github.com/Infinidoge/nix-minecraft/pull/161
@@ -44,8 +45,7 @@
           inputs.disko.nixosModules.disko
           inputs.grub2-themes.nixosModules.default
           inputs.nix-minecraft.nixosModules.minecraft-servers
-
-          ./configuration
+          (inputs.import-tree ./configuration)
         ];
         defaultSpecialArgs = { inherit inputs system; };
       in {
