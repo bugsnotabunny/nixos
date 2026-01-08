@@ -1,25 +1,6 @@
 { pkgs, lib, config, ... }: {
   options.gpu = with lib; {
     manufacturer = mkOption { type = types.enum [ "intel" "nvidia" ]; };
-    nvidiaPrime = {
-      sync.enable = mkEnableOption { };
-      offload = {
-        enable = mkEnableOption { };
-        enableOffloadCmd = mkEnableOption { };
-      };
-      nvidiaBusId = mkOption {
-        type = types.str;
-        default = "";
-      };
-      intelBusId = mkOption {
-        type = types.str;
-        default = "";
-      };
-      amdgpuBusId = mkOption {
-        type = types.str;
-        default = "";
-      };
-    };
   };
 
   config = {
@@ -55,7 +36,6 @@
       modesetting.enable = true;
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
-      prime = config.gpu.nvidiaPrime;
     };
   });
 }

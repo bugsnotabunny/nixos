@@ -11,5 +11,5 @@ arch:
   in {
     hyprland = optimized super.hyprland;
     unstable.hyprland = optimized super.unstable.hyprland;
-    optimized.comfyui = optimized super.custom.comfyui;
+    custom.comfyui = optimized super.custom.comfyui;
   })
