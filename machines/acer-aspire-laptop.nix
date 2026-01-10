@@ -7,13 +7,11 @@
   batteries.enable = true;
   networking.hostId = "99f1f7ff";
   cpuArch = "x86-64";
-  gpu = {
-    manufacturer = "nvidia";
-    nvidiaPrime = {
-      sync.enable = true;
-      nvidiaBusId = "PCI:2:0:0";
-      intelBusId = "PCI:0:2:0";
-    };
+  gpu.manufacturer = "nvidia";
+  hardware.nvidia.prime = {
+    sync.enable = true;
+    nvidiaBusId = "PCI:2:0:0";
+    intelBusId = "PCI:0:2:0";
   };
 
   rootDevice = "/dev/nvme0n1";
