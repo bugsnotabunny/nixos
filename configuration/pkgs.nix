@@ -8,9 +8,9 @@
     nixpkgs.overlays = [
       inputs.nix-minecraft.overlay
       inputs.nixified-ai.overlays.comfyui
-      (import ../pkgsOverlays/custom.nix lib)
       (import ../pkgsOverlays/optimized.nix config.cpuArch)
       (import ../pkgsOverlays/unstable.nix inputs.nixpkgs-unstable)
+      (import ../pkgsOverlays/custom.nix lib)
     ];
 
     nixpkgs.config.permittedInsecurePackages =
