@@ -35,8 +35,9 @@
 
   environment.systemPackages = with pkgs; [
     clamav
-    drawio
+    custom.aladdin-2fa-desktop
     custom.ktalk
+    drawio
     mattermost-desktop
     vscode
   ];

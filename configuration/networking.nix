@@ -4,7 +4,10 @@
     networkmanager = {
       enable = true;
       wifi.powersave = true;
-      plugins = with pkgs; [ networkmanager-openvpn ];
+      plugins = with pkgs; [
+        networkmanager-openvpn
+        networkmanager-openconnect
+      ];
     };
 
     firewall = { enable = true; };
