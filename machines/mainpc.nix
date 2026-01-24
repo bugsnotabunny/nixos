@@ -8,7 +8,7 @@
   username = "banan";
 
   doGaming = true;
-  minecraftServer = true;
+  minecraftServer = false;
   cpuArch = "znver2";
 
   gpu.manufacturer = "nvidia";
