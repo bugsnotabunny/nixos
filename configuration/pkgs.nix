@@ -59,10 +59,9 @@
       xfce.thunar
       xfce.thunar-archive-plugin
       xfce.thunar-volman
-      zed-editor
       nixd
       marksman
-    ]) ++ (with pkgs.unstable; [ yandex-music grim grimblast ])
+    ]) ++ (with pkgs.unstable; [ yandex-music grim grimblast zed-editor-fhs ])
       ++ (with inputs; [ nix-alien.packages.${system}.nix-alien ]);
 
     programs.hyprland = {
