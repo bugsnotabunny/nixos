@@ -35,6 +35,10 @@
     "sticky_scroll": true
   },
 
+  "collaboration_panel": {
+    "dock": "right"
+  },
+
   "outline_panel": {
     "dock": "right"
   },
