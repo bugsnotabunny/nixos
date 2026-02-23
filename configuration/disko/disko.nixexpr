@@ -30,13 +30,20 @@
           type = "gpt";
           partitions = {
             ESP = {
-              size = "512M";
+              size = "1024M";
               type = "EF00";
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
                 mountOptions = [ "nofail" ];
+              };
+            };
+            swap = {
+              size = "1024M";
+              content = {
+                type = "swap";
+                randomEncryption = true;
               };
             };
             zfs = {
@@ -50,6 +57,11 @@
         };
       };
     } // builtins.listToAttrs extraDisksList;
+
+    nodev = {
+      "/tmp".fsType = "tmpfs";
+      "/var/tmp".fsType = "tmpfs";
+    };
 
     zpool = {
       zroot = {
