@@ -3,8 +3,6 @@
 
   config = lib.mkIf (config.doGaming) {
     environment.systemPackages = with pkgs; [
-      teamspeak3
-      teamspeak6-client
       lutris
       mangohud
       vulkan-loader
