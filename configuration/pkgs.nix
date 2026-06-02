@@ -56,9 +56,9 @@
       wofi
       xdg-terminal-exec
       xdg-utils
-      xfce.thunar
-      xfce.thunar-archive-plugin
-      xfce.thunar-volman
+      thunar
+      thunar-archive-plugin
+      thunar-volman
       nixd
       marksman
     ]) ++ (with pkgs.unstable; [ yandex-music grim grimblast zed-editor-fhs ])

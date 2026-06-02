@@ -9,7 +9,7 @@
 
       home = {
         enableNixpkgsReleaseCheck = true;
-        stateVersion = "25.11";
+        stateVersion = "26.05";
         sessionVariables = {
           GTK_THEME = defaultGtkTheme;
           ICON_THEME = "Tela";
@@ -86,11 +86,11 @@
       programs.helix = {
         enable = true;
         defaultEditor = true;
-        extraPackages = with pkgs; [ marksman nixd nixfmt-classic ];
+        extraPackages = with pkgs; [ marksman nixd nixfmt ];
         languages.language = [{
           name = "nix";
           auto-format = true;
-          formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt";
+          formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
         }];
         settings = builtins.fromTOML (builtins.readFile ./helix/config.toml);
       };
