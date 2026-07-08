@@ -1,5 +1,13 @@
-{ lib, config, pkgs, ... }: {
-  options = with lib; { doGaming = mkEnableOption { }; };
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
+  options = with lib; {
+    doGaming = mkEnableOption { };
+  };
 
   config = lib.mkIf (config.doGaming) {
     environment.systemPackages = with pkgs; [
@@ -16,7 +24,7 @@
 
     programs.gamescope = {
       enable = true;
-      capSysNice = true;
+      capSysNice = false;
     };
 
     programs.steam = {
@@ -28,4 +36,3 @@
     };
   };
 }
-
