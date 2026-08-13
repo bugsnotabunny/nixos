@@ -1,15 +1,20 @@
-{ ... }:
+{ config, ... }:
 {
   nix = {
     settings.experimental-features = [
       "nix-command"
       "flakes"
     ];
+
     extraOptions = ''
       extra-substituters = 
       extra-trusted-public-keys = 
     '';
     settings = {
+      trusted-users = [
+        "root"
+        config.username
+      ];
       substituters = [
         "https://cache.nixos.org"
       ];
