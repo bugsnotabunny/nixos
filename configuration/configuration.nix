@@ -1,5 +1,4 @@
 { pkgs, ... }: {
-
   nixpkgs.config.allowUnfree = true;
   hardware.enableAllFirmware = true;
 
@@ -26,8 +25,7 @@
   services.tumbler.enable = true;
   security.rtkit.enable = true;
   security.polkit.enable = true;
-  security.pam.services.gdm.enableGnomeKeyring = true;
-  services.gnome.gnome-keyring.enable = true;
+
   boot.zfs.forceImportRoot = false;
 
   # This value determines the NixOS release from which the default
@@ -38,8 +36,10 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "26.05"; # Did you read the comment?
 
-  assertions = [{
-    assertion = builtins.pathExists ./hardware-configuration.nix;
-    message = "hardware-configuration.nix is required but not found";
-  }];
+  assertions = [
+    {
+      assertion = builtins.pathExists ./hardware-configuration.nix;
+      message = "hardware-configuration.nix is required but not found";
+    }
+  ];
 }
