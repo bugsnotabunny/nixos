@@ -1,11 +1,8 @@
 {
-  "disable_ai": true,
-
   "telemetry": {
     "diagnostics": false,
     "metrics": false
   },
-
   "format_on_save": "on",
   "autosave": "on_focus_change",
   "ui_font_size": 16,
@@ -17,16 +14,14 @@
   },
 
   "theme": {
-    "mode": "system",
-    "light": "Gruvbox Dark",
-    "dark": "One Dark"
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "Catppuccin Frappé",
   },
-
 
   "tabs": {
     "git_status": true
   },
-
 
   "project_panel": {
     "git_status": true,
@@ -45,6 +40,10 @@
 
   "git_panel": {
     "dock": "right"
+  },
+
+  "agent": {
+    "dock": "right",
   },
 
   "diagnostics": {
