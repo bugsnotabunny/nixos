@@ -48,6 +48,8 @@
         imagemagick
         kitty
         libreoffice-fresh
+        marksman
+        nixd
         onlyoffice-desktopeditors
         p7zip
         qbittorrent
@@ -57,6 +59,9 @@
         swaylock-effects
         system-config-printer
         telegram-desktop
+        thunar
+        thunar-archive-plugin
+        thunar-volman
         tree
         unzip
         viewnior
@@ -69,16 +74,11 @@
         wofi
         xdg-terminal-exec
         xdg-utils
-        thunar
-        thunar-archive-plugin
-        thunar-volman
-        nixd
-        marksman
       ])
       ++ (with pkgs.unstable; [
-        yandex-music
         grim
         grimblast
+        yandex-music
         zed-editor-fhs
       ])
       ++ (with inputs; [ nix-alien.packages.${system}.nix-alien ]);
