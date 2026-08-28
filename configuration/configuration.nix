@@ -1,9 +1,10 @@
-{ pkgs, ... }: {
+{ config, ... }: {
   nixpkgs.config.allowUnfree = true;
   hardware.enableAllFirmware = true;
 
   boot = {
-    kernelPackages = pkgs.linuxPackagesFor pkgs.linux_xanmod;
+    supportedFilesystems.zfs = true;
+    zfs.package = config.boot.kernelPackages.zfs_cachyos;
 
     loader.efi.canTouchEfiVariables = true;
     loader.grub = {
