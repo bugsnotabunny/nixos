@@ -1,6 +1,9 @@
 { pkgs, ... }: {
   networking = {
-    nameservers = [ "1.1.1.1" "8.8.8.8" ];
+    nameservers = [
+      "1.1.1.1"
+      "8.8.8.8"
+    ];
     hostName = "nixos";
     networkmanager = {
       enable = true;
@@ -11,7 +14,9 @@
       ];
     };
 
-    firewall = { enable = true; };
+    firewall = {
+      enable = true;
+    };
   };
 
   services.openssh.enable = true;

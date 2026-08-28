@@ -16,8 +16,14 @@
     users.users.${config.username} = {
       isNormalUser = true;
       description = config.userDescription;
-      extraGroups =
-        [ "audio" "docker" "input" "networkmanager" "video" "wheel" ];
+      extraGroups = [
+        "audio"
+        "docker"
+        "input"
+        "networkmanager"
+        "video"
+        "wheel"
+      ];
     };
   };
 }

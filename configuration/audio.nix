@@ -11,5 +11,9 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ pamixer pavucontrol playerctl ];
+  environment.systemPackages = with pkgs; [
+    pamixer
+    pavucontrol
+    playerctl
+  ];
 }

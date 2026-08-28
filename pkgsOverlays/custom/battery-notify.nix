@@ -1,6 +1,8 @@
 { rustPlatform, fetchFromGitHub }:
-let pname = "battery-notify";
-in rustPlatform.buildRustPackage {
+let
+  pname = "battery-notify";
+in
+rustPlatform.buildRustPackage {
   inherit pname;
   version = "0.1.0";
 

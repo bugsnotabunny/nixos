@@ -1,10 +1,18 @@
-{ inputs, config, lib, ... }: {
+{
+  inputs,
+  config,
+  lib,
+  ...
+}:
+{
   home-manager.backupFileExtension = "backup";
-  home-manager.users.${config.username} = { pkgs, ... }:
+  home-manager.users.${config.username} =
+    { pkgs, ... }:
     let
       defaultGtkPackage = pkgs.tokyonight-gtk-theme;
       defaultGtkTheme = "Tokyonight-Dark";
-    in {
+    in
+    {
       imports = [ inputs.zen-browser.homeModules.twilight ];
 
       home = {
@@ -55,17 +63,19 @@
           "x-scheme-handler/terminal" = "kitty.desktop";
         };
 
-        portal = let
-          packages = with pkgs; [
-            xdg-desktop-portal-hyprland
-            xdg-desktop-portal-wlr
-            xdg-desktop-portal-gtk
-          ];
-        in {
-          enable = true;
-          extraPortals = packages;
-          configPackages = packages;
-        };
+        portal =
+          let
+            packages = with pkgs; [
+              xdg-desktop-portal-hyprland
+              xdg-desktop-portal-wlr
+              xdg-desktop-portal-gtk
+            ];
+          in
+          {
+            enable = true;
+            extraPortals = packages;
+            configPackages = packages;
+          };
       };
 
       programs.waybar = {
@@ -80,19 +90,28 @@
         enable = true;
         enableZshIntegration = true;
         enableBashIntegration = true;
-        options = [ "--cmd cd" "--no-cmd" ];
+        options = [
+          "--cmd cd"
+          "--no-cmd"
+        ];
       };
 
       programs.helix = {
         enable = true;
         defaultEditor = true;
-        extraPackages = with pkgs; [ marksman nixd nixfmt ];
-        languages.language = [{
-          name = "nix";
-          auto-format = true;
-          formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
-        }];
-        settings = builtins.fromTOML (builtins.readFile ./helix/config.toml);
+        extraPackages = with pkgs; [
+          marksman
+          nixd
+          nixfmt
+        ];
+        languages.language = [
+          {
+            name = "nix";
+            auto-format = true;
+            formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
+          }
+        ];
+        settings = fromTOML (builtins.readFile ./helix/config.toml);
       };
 
       programs.git = {
@@ -155,15 +174,16 @@
       };
 
       home.file =
-        let forceAll = lib.mapAttrs (_: value: value // { force = true; });
-        in forceAll {
+        let
+          forceAll = lib.mapAttrs (_: value: value // { force = true; });
+        in
+        forceAll {
           ".config/kitty".source = ./kitty;
           ".config/wofi".source = ./wofi;
           ".config/wlogout".source = ./wlogout;
           ".config/dunst".source = ./dunst;
           ".config/battery-notify".source = ./battery-notify;
-          ".config/hypr/hyprland.conf".text =
-            import ./hypr/hyprland.conf.nixexpr config.batteries.enable;
+          ".config/hypr/hyprland.conf".text = import ./hypr/hyprland.conf.nixexpr config.batteries.enable;
           ".config/zed".source = ./zed;
         };
     };

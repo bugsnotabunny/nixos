@@ -1,5 +1,8 @@
 { pkgs, ... }: {
-  fonts.packages = with pkgs; [ noto-fonts nerd-fonts.jetbrains-mono ];
+  fonts.packages = with pkgs; [
+    noto-fonts
+    nerd-fonts.jetbrains-mono
+  ];
 
   fonts.fontDir.enable = true;
 

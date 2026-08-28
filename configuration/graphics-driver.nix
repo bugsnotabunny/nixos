@@ -1,6 +1,17 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   options.gpu = with lib; {
-    manufacturer = mkOption { type = types.enum [ "intel" "nvidia" ]; };
+    manufacturer = mkOption {
+      type = types.enum [
+        "intel"
+        "nvidia"
+      ];
+    };
   };
 
   config = {
@@ -9,7 +20,8 @@
       enable32Bit = true;
     };
 
-  } // (lib.mkIf (config.gpu.manufacturer == "intel") {
+  }
+  // (lib.mkIf (config.gpu.manufacturer == "intel") {
     services.xserver.videoDrivers = [ "modesetting" ];
     hardware.graphics.extraPackages = with pkgs; [
       vpl-gpu-rt
@@ -22,7 +34,8 @@
       VDPAU_DRIVER = "va_gl";
     };
 
-  }) // (lib.mkIf (config.gpu.manufacturer == "nvidia") {
+  })
+  // (lib.mkIf (config.gpu.manufacturer == "nvidia") {
     services.xserver.videoDrivers = [ "nvidia" ];
     nixpkgs.config.cudaSupport = true;
 

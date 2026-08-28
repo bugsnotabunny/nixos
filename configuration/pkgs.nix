@@ -50,6 +50,7 @@
         libreoffice-fresh
         marksman
         nixd
+        nixfmt
         onlyoffice-desktopeditors
         p7zip
         qbittorrent

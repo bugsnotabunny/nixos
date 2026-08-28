@@ -1,5 +1,15 @@
-{ stdenv, fetchurl, writeShellScript, buildFHSEnv, dpkg, coreutils, xorg
-, fontconfig, libGL, makeDesktopItem }:
+{
+  stdenv,
+  fetchurl,
+  writeShellScript,
+  buildFHSEnv,
+  dpkg,
+  coreutils,
+  xorg,
+  fontconfig,
+  libGL,
+  makeDesktopItem,
+}:
 let
   name = "aladdin-2fa-desktop";
   url = "https://www.aladdin-rd.ru/upload/downloads/aladdin-2fa";
@@ -12,7 +22,10 @@ let
     comment = "Aladdin 2FA Desktop client for authentication";
     exec = "aladdin-2fa-desktop";
     icon = "aladdin-2fa-desktop";
-    categories = [ "Utility" "Security" ];
+    categories = [
+      "Utility"
+      "Security"
+    ];
     startupNotify = false;
     terminal = false;
     type = "Application";
@@ -44,7 +57,8 @@ let
       sha256 = "sha256-+9QUFG8PO/eN1sc9Z9K4tHEfuO1wXs4XYh/nVfcpAL0=";
     };
   };
-in buildFHSEnv {
+in
+buildFHSEnv {
   inherit name;
   targetPkgs = pkgs: [ aladdin-2fa-desktop-dpkg ];
   multiPkgs = pkgs: [

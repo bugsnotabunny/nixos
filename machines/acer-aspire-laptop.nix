@@ -1,9 +1,13 @@
 { ... }: {
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 8 * 1024;
-  }];
-  boot.kernel.sysctl = { "vm.swappiness" = 100; };
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 8 * 1024;
+    }
+  ];
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 100;
+  };
   batteries.enable = true;
   networking.hostId = "99f1f7ff";
   cpuArch = "x86-64";

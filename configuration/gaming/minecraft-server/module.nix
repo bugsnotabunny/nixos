@@ -1,5 +1,13 @@
-{ lib, config, pkgs, ... }: {
-  options = with lib; { minecraftServer = mkEnableOption { }; };
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
+  options = with lib; {
+    minecraftServer = mkEnableOption { };
+  };
 
   config = lib.mkIf (config.minecraftServer) {
     services.minecraft-servers = {
@@ -14,7 +22,9 @@
         restart = "always";
         jvmOpts = "-Xms1024M -Xmx24576M";
         package = pkgs.neoforgeServers.neoforge-21_1_196;
-        symlinks = { "mods" = ./mods; };
+        symlinks = {
+          "mods" = ./mods;
+        };
         operators = {
           katkek = {
             uuid = "e5e9f7f1-3530-382f-aae2-5a774ecdc4e3";
