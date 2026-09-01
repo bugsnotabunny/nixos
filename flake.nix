@@ -71,6 +71,7 @@
         nixosConfigurations.mainpc = machineConfiguration ./machines/mainpc.nix;
         nixosConfigurations.thinkpad = machineConfiguration ./machines/thinkpad.nix;
         nixosConfigurations.aspire = machineConfiguration ./machines/acer-aspire-laptop.nix;
+        nixosConfigurations.stcAsusZenbook = machineConfiguration ./machines/stcAsusZenbook.nix;
       }
     );
 }
