@@ -6,12 +6,8 @@ let
       key = "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=";
     }
     {
-      sub = "https://attic.xuyh0120.win/lantian";
-      key = "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=";
-    }
-    {
-      sub = "https://cache.xinux.uz";
-      key = "cache.xinux.uz:BXCrtqejFjWzWEB9YuGB7X2MV4ttBur1N8BkwQRdH+0=";
+      sub = "https://cache.lantian.pub/lantian";
+      key = "lantian:WVGO7vsRMSEN+h7Lp7kv6SAmrkEXgUGbbXm7jMDjBuQ=";
     }
   ];
 
