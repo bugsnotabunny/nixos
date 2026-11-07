@@ -28,7 +28,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ncro.url = "github:feel-co/ncro";
+    ncro = {
+      url = "github:feel-co/ncro";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
@@ -39,11 +42,6 @@
     nix-minecraft = {
       url = "github:Infinidoge/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-cachyos-kernel = {
-      url = "github:xddxdd/nix-cachyos-kernel/release";
-      # Do not override its nixpkgs input, otherwise there can be mismatch between patches and kernel version
     };
 
     flake-utils.url = "github:numtide/flake-utils";
