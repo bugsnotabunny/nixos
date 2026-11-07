@@ -24,7 +24,11 @@
 }
 
 #workspaces button.empty {
-  opacity: 0.5;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  font-size: 0;
 }
 
 #cpu,
