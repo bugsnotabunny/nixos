@@ -22,9 +22,6 @@
     ];
 
     nixpkgs.config.permittedInsecurePackages = [
-      "olm-3.2.16"
-      "mbedtls-2.28.10"
-      "qtwebengine-5.15.19"
     ];
 
     environment.systemPackages =
@@ -41,7 +38,7 @@
         dunst
         evince
         fastfetch
-        ffmpeg-full
+        ffmpeg
         git
         gitui
         gparted
@@ -67,7 +64,6 @@
         unzip
         viewnior
         vlc
-        vscode-fhs
         wayland-utils
         wget
         wl-clipboard
@@ -75,22 +71,18 @@
         wofi
         xdg-terminal-exec
         xdg-utils
+        xwayland-satellite
       ])
       ++ (with pkgs.unstable; [
-        grim
-        grimblast
-        yandex-music
         zed-editor-fhs
       ])
       ++ (with inputs; [ nix-alien.packages.${system}.nix-alien ]);
 
-    programs.hyprland = {
+    programs.niri = {
       enable = true;
-      withUWSM = true;
-      xwayland.enable = true;
-      package = pkgs.unstable.hyprland;
+      package = pkgs.unstable.niri;
     };
-
+    systemd.user.services.niri.enableDefaultPath = false;
     programs.nix-ld.enable = true;
     programs.dconf.enable = true;
   };

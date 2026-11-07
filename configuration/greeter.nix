@@ -10,7 +10,7 @@
                       --user-menu \
                       --remember \
                       --remember-session \
-                      --sessions ${config.programs.hyprland.package}/share/wayland-sessions'';
+                      --sessions ${config.programs.niri.package}/share/wayland-sessions'';
         user = "greeter";
       };
     };

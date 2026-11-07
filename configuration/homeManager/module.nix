@@ -183,7 +183,7 @@
           ".config/wlogout".source = ./wlogout;
           ".config/dunst".source = ./dunst;
           ".config/battery-notify".source = ./battery-notify;
-          ".config/hypr/hyprland.conf".text = import ./hypr/hyprland.conf.nixexpr config.batteries.enable;
+          ".config/niri".source = ./niri;
           ".config/zed".source = ./zed;
         };
     };

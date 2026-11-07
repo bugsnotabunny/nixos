@@ -9,8 +9,8 @@ arch:
     optimized = pkg: withOptimized super.stdenv pkg;
   in
   {
-    hyprland = optimized super.hyprland;
-    unstable.hyprland = optimized super.unstable.hyprland;
+    niri = optimized super.niri;
+    unstable.niri = optimized super.unstable.niri;
     custom.comfyui = optimized super.custom.comfyui;
   }
 )

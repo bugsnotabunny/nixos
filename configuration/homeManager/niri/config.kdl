@@ -1,0 +1,154 @@
+spawn-at-startup "wl-clipboard-history" "-t"
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
+spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/banan/.current-wallpaper.png"
+spawn-at-startup "waybar"
+spawn-at-startup "dunst"
+spawn-at-startup "nm-applet"
+spawn-at-startup "blueman-applet"
+spawn-at-startup "battery-notify"
+
+input {
+    keyboard {
+        xkb {
+            layout "us,ru"
+            options "grp:alt_shift_toggle"
+        }
+    }
+
+    mouse {
+        accel-speed 0.0
+    }
+
+    warp-mouse-to-focus
+    focus-follows-mouse
+}
+
+layout {
+    gaps 5
+    center-focused-column "never"
+
+    focus-ring {
+        off
+    }
+    border {
+        off
+    }
+
+    default-column-width { proportion 0.5; }
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+prefer-no-csd
+
+animations {
+    window-open {
+        duration-ms 250
+        curve "cubic-bezier" 0.05 0.9 0.1 1.05
+    }
+    window-close {
+        duration-ms 200
+        curve "cubic-bezier" 0.36 0.0 0.66 -0.56
+    }
+    window-movement {
+        duration-ms 200
+        curve "ease-out-cubic"
+    }
+    workspace-switch {
+        duration-ms 300
+        curve "ease-out-cubic"
+    }
+}
+
+window-rule {
+    geometry-corner-radius 10
+    clip-to-geometry true
+}
+
+window-rule {
+    match title="^(file_progress|confirm|dialog|download|notification|error|splash|confirmreset|Open File|branchdialog|wofi|smile|feh|file-roller|Media viewer|Picture-in-Picture)$"
+    open-floating true
+}
+
+window-rule {
+    match title="^(Volume Control)$"
+    open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 600; }
+    default-floating-position x=75 y=440 relative-to="top-left"
+}
+
+window-rule {
+    match title="^(wlogout)$"
+    open-fullscreen true
+}
+
+binds {
+    XF86AudioRaiseVolume  allow-when-locked=true { spawn "pamixer" "-i" "5"; }
+    XF86AudioLowerVolume  allow-when-locked=true { spawn "pamixer" "-d" "5"; }
+    XF86AudioMute         allow-when-locked=true { spawn "pamixer" "-t"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "set" "5%+"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "5%-"; }
+    XF86AudioPlay         allow-when-locked=true { spawn "playerctl" "play-pause"; }
+    XF86AudioPause        allow-when-locked=true { spawn "playerctl" "play-pause"; }
+    XF86AudioNext         allow-when-locked=true { spawn "playerctl" "next"; }
+    XF86AudioPrev         allow-when-locked=true { spawn "playerctl" "previous"; }
+
+    Mod+Shift+S { screenshot; }
+    Print       { screenshot-screen; }
+    Alt+Print   { screenshot-window; }
+
+    Mod+T      { spawn "kitty"; }
+    Mod+B      { spawn "zen-twilight"; }
+    Mod+L      { spawn "swaylock" "--screenshots" "--clock" "--indicator" "--indicator-radius" "100" "--indicator-thickness" "7" "--effect-blur" "7x5" "--effect-vignette" "0.5:0.5" "--ring-color" "bbffcc" "--key-hl-color" "880033" "--line-color" "00300000" "--inside-color" "00000088" "--separator-color" "00000000"; }
+    Mod+E      { spawn "thunar"; }
+    Mod+R      { spawn "wofi"; }
+    Mod+M      { spawn "sh" "-c" "killall smile || smile"; }
+    Mod+Escape { spawn "wlogout" "--protocol" "layer-shell" "-T" "400" "-B" "400"; }
+
+    Mod+Q     { close-window; }
+    Mod+F     { fullscreen-window; }
+    Mod+Space { toggle-window-floating; }
+
+    Mod+Left  { focus-column-left; }
+    Mod+Right { focus-column-right; }
+    Mod+Up    { focus-window-up; }
+    Mod+Down  { focus-window-down; }
+
+    Mod+Shift+Left  { move-column-left; }
+    Mod+Shift+Right { move-column-right; }
+    Mod+Shift+Up    { move-window-up; }
+    Mod+Shift+Down  { move-window-down; }
+
+    Mod+Ctrl+Left  { set-column-width "-5%"; }
+    Mod+Ctrl+Right { set-column-width "+5%"; }
+    Mod+Ctrl+Up    { set-window-height "-5%"; }
+    Mod+Ctrl+Down  { set-window-height "+5%"; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+0 { focus-workspace 10; }
+
+    Mod+Shift+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+Shift+9 { move-column-to-workspace 9; }
+    Mod+Shift+Shift+0 { move-column-to-workspace 10; }
+
+    Mod+WheelScrollDown { focus-column-right; }
+    Mod+WheelScrollUp   { focus-column-left; }
+}
+

@@ -40,10 +40,14 @@
     nixpkgs.config.cudaSupport = true;
 
     boot = {
-      initrd.kernelModules = [ "nvidia" ];
+      initrd.kernelModules = [
+        "nvidia"
+        "nvidia_modeset"
+        "nvidia_uvm"
+        "nvidia_drm"
+      ];
       blacklistedKernelModules = [ "nouveau" ];
     };
-
     hardware.nvidia = {
       open = false;
       modesetting.enable = true;
