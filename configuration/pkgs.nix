@@ -71,6 +71,7 @@
         wofi
         xdg-terminal-exec
         xdg-utils
+        xfce.exo
         xwayland-satellite
       ])
       ++ (with pkgs.unstable; [
