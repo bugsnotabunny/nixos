@@ -28,6 +28,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ncro.url = "github:feel-co/ncro";
+
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -62,6 +64,7 @@
               inputs.disko.nixosModules.disko
               inputs.grub2-themes.nixosModules.default
               inputs.nix-minecraft.nixosModules.minecraft-servers
+              inputs.ncro.nixosModules.default
               (inputs.import-tree ./configuration)
             ]
             ++ [ machineConfigPath ];
