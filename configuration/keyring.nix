@@ -2,6 +2,7 @@
 {
   programs.seahorse.enable = true;
   services.gnome.gnome-keyring.enable = true;
+  security.polkit.enable = true;
   security.pam.services = {
     greetd.enableGnomeKeyring = true;
     greetd-password.enableGnomeKeyring = true;

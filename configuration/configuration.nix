@@ -1,10 +1,9 @@
-{ config, ... }: {
+{ ... }: {
   nixpkgs.config.allowUnfree = true;
   hardware.enableAllFirmware = true;
 
   boot = {
     supportedFilesystems.zfs = true;
-    zfs.package = config.boot.kernelPackages.zfs_cachyos;
 
     loader.efi.canTouchEfiVariables = true;
     loader.grub = {
@@ -25,7 +24,6 @@
   services.udisks2.enable = true;
   services.tumbler.enable = true;
   security.rtkit.enable = true;
-  security.polkit.enable = true;
 
   boot.zfs.forceImportRoot = false;
 
