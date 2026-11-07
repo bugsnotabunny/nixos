@@ -173,18 +173,23 @@
         };
       };
 
-      home.file =
+      xdg.configFile =
         let
           forceAll = lib.mapAttrs (_: value: value // { force = true; });
         in
         forceAll {
-          ".config/kitty".source = ./kitty;
-          ".config/wofi".source = ./wofi;
-          ".config/wlogout".source = ./wlogout;
-          ".config/dunst".source = ./dunst;
-          ".config/battery-notify".source = ./battery-notify;
-          ".config/niri".source = ./niri;
-          ".config/zed".source = ./zed;
+          "xfce4/helpers.rc".text = ''
+            TerminalEmulator=kitty
+            TerminalEmulatorDismissed=true
+          '';
+
+          "kitty".source = ./kitty;
+          "wofi".source = ./wofi;
+          "wlogout".source = ./wlogout;
+          "dunst".source = ./dunst;
+          "battery-notify".source = ./battery-notify;
+          "niri".source = ./niri;
+          "zed".source = ./zed;
         };
     };
 }
