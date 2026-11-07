@@ -10,15 +10,15 @@
     "disk",
     "network"
   ],
-  "modules-center": ["hyprland/workspaces"],
+  "modules-center": ["niri/workspaces"],
   "modules-right": [
     "tray",
-    "hyprland/language",
+    "niri/language",
     "pulseaudio",
     "battery",
     "clock"
   ],
-  "hyprland/workspaces": {
+  "niri/workspaces": {
     "on-click": "activate",
     "format": "{icon}",
     "format-icons": {
@@ -82,7 +82,7 @@
     "on-click-right": "pavucontrol",
     "smooth-scrolling-threshold": 1
   },
-  "hyprland/language": {
+  "niri/language": {
     "format-ru": "🇷🇺",
     "format-en": "🇬🇧"
   },
