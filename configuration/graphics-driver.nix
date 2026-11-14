@@ -10,6 +10,7 @@
       type = types.enum [
         "intel"
         "nvidia"
+        "amd"
       ];
     };
   };
