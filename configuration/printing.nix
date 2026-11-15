@@ -8,8 +8,8 @@
   services.printing.drivers = with pkgs; [
     gutenprint
     gutenprintBin
-    hplip
-    hplipWithPlugin
+    # hplip
+    # hplipWithPlugin
     postscript-lexmark
     samsung-unified-linux-driver
     splix
