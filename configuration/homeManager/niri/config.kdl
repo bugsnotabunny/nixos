@@ -18,9 +18,7 @@ input {
     touchpad {
         tap                 // Enables tap-to-click (1-finger left, 2-finger right, 3-finger middle)
         natural-scroll      // Content follows finger movement (enabled by default in Niri)
-        dwt                 // Disable-while-typing to prevent accidental palm clicks
-        drag                // Enables tap-and-drag
-        // drag-lock        // Optional: keeps dragging briefly after lifting finger
+        drag true               // Enables tap-and-drag
         accel-speed 0.2     // Adjust pointer sensitivity (-1.0 to 1.0)
         accel-profile "adaptive"
         scroll-method "two-finger"
